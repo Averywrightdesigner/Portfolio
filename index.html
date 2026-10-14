@@ -364,6 +364,37 @@
     }
 
     /* ============================================================
+       BUTTERFLY CURSOR
+       Only for mouse/trackpad users. Wings flap over anything clickable.
+       ============================================================ */
+    html.bfly-on, html.bfly-on * { cursor: none !important; }
+    .bfly {
+      position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none;
+      width: 44px; height: 38px; perspective: 140px;
+      opacity: 0; transition: opacity .2s ease;
+      will-change: transform;
+    }
+    html.bfly-on .bfly.show { opacity: 1; }
+    .bfly i {
+      position: absolute; top: 0; height: 38px; display: block;
+      background: url("images/butterfly.png") no-repeat; background-size: 44px 38px;
+      transition: transform .25s var(--ease);
+    }
+    .bfly .l { left: 0;    width: 21px; background-position: 0 0;     transform-origin: 100% 50%; }
+    .bfly .b { left: 21px; width: 2px;  background-position: -21px 0; }
+    .bfly .r { left: 23px; width: 21px; background-position: -23px 0; transform-origin: 0 50%; }
+    .bfly-body { width: 100%; height: 100%; transition: transform .15s ease; }
+    .bfly.press .bfly-body { transform: scale(.85); }
+    .bfly.flap .l { animation: flapL .26s ease-in-out infinite alternate; }
+    .bfly.flap .r { animation: flapR .26s ease-in-out infinite alternate; }
+    @keyframes flapL { from { transform: rotateY(0); } to { transform: rotateY(68deg); } }
+    @keyframes flapR { from { transform: rotateY(0); } to { transform: rotateY(-68deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .bfly.flap .l, .bfly.flap .r { animation: none; }
+      .bfly.flap .bfly-body { transform: scale(1.15); }
+    }
+
+    /* ============================================================
        RESPONSIVE
        ============================================================ */
     @media (max-width: 960px) {
@@ -398,6 +429,7 @@
   </style>
 </head>
 <body>
+  <div class="bfly" aria-hidden="true"><div class="bfly-body"><i class="l"></i><i class="b"></i><i class="r"></i></div></div>
   <a class="skip" href="#work">Skip to work</a>
 
   <!-- ===================== HEADER ===================== -->
@@ -870,6 +902,37 @@
         }
       };
     }
+    /* ---------- Butterfly cursor ----------
+       Only switches on for a real mouse or trackpad, so phones and
+       tablets keep their normal behavior. */
+    (function () {
+      if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      const b = document.querySelector(".bfly");
+      const body = b.querySelector(".bfly-body");
+      const HEAD_X = 22, HEAD_Y = 13;          // the butterfly's head is the click point
+      const CLICKABLE = "a, button, [role='button'], label, summary, input, select, textarea";
+      let x = -100, y = -100, lastX = 0, tilt = 0, raf = null;
+
+      function draw() {
+        tilt += ((Math.max(-18, Math.min(18, (x - lastX) * 1.2))) - tilt) * 0.2;   // lean into the direction of travel
+        lastX = x;
+        b.style.transform = "translate3d(" + (x - HEAD_X) + "px," + (y - HEAD_Y) + "px,0) rotate(" + tilt.toFixed(2) + "deg)";
+        raf = Math.abs(tilt) > 0.1 ? requestAnimationFrame(draw) : null;
+      }
+      document.addEventListener("mousemove", (e) => {
+        x = e.clientX; y = e.clientY;
+        document.documentElement.classList.add("bfly-on");
+        b.classList.add("show");
+        if (!raf) raf = requestAnimationFrame(draw);
+      }, { passive: true });
+      document.addEventListener("mouseover", (e) => {
+        b.classList.toggle("flap", !!(e.target.closest && e.target.closest(CLICKABLE)));
+      });
+      document.addEventListener("mousedown", () => b.classList.add("press"));
+      document.addEventListener("mouseup", () => b.classList.remove("press"));
+      document.documentElement.addEventListener("mouseleave", () => b.classList.remove("show"));
+      document.documentElement.addEventListener("mouseenter", () => b.classList.add("show"));
+    })();
   </script>
 </body>
 </html>
