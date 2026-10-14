@@ -677,7 +677,7 @@
        browser, so there's no audio file to host or license.
        To use your own song instead, put an .mp3 in the folder and set
        MUSIC_FILE to its name, e.g. "music.mp3". */
-    const MUSIC_FILE = "";
+    const MUSIC_FILE = "music.mp3";
 
     const musicBtn = document.getElementById("musicBtn");
     const player = MUSIC_FILE ? fileMusic(MUSIC_FILE) : lofiMusic();
@@ -690,9 +690,23 @@
     });
 
     function fileMusic(src) {
-      const a = new Audio(src);
-      a.loop = true; a.volume = 0.4;
-      return { play: () => a.play(), stop: () => a.pause() };
+      // preload "none" means the song only downloads once someone presses play
+      const a = new Audio();
+      a.preload = "none"; a.loop = true; a.src = src;
+      const MAX = 0.4;
+      let fade;
+      function fadeTo(target, done) {
+        clearInterval(fade);
+        fade = setInterval(() => {
+          const v = a.volume + (target > a.volume ? 0.02 : -0.02);
+          if (Math.abs(target - a.volume) <= 0.02) { a.volume = target; clearInterval(fade); if (done) done(); }
+          else a.volume = Math.min(1, Math.max(0, v));
+        }, 40);
+      }
+      return {
+        play() { a.volume = 0; a.play().catch(() => {}); fadeTo(MAX); },
+        stop() { fadeTo(0, () => a.pause()); }
+      };
     }
 
     function lofiMusic() {
