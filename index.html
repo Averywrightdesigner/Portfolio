@@ -364,34 +364,35 @@
     }
 
     /* ============================================================
-       BUTTERFLY CURSOR
-       Only for mouse/trackpad users. Wings flap over anything clickable.
+       FERN CURSOR
+       Only for mouse/trackpad users. The leaflets fold up along the
+       stem, and spread open over anything clickable.
        ============================================================ */
-    html.bfly-on, html.bfly-on * { cursor: none !important; }
-    .bfly {
+    html.cur-on, html.cur-on * { cursor: none !important; }
+    .fern-cur {
       position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none;
-      width: 44px; height: 38px; perspective: 140px;
-      opacity: 0; transition: opacity .2s ease;
-      will-change: transform;
+      opacity: 0; transition: opacity .2s ease; will-change: transform;
+      /* the fern tip is the click point */
+      transform-origin: 34px 2px;
     }
-    html.bfly-on .bfly.show { opacity: 1; }
-    .bfly i {
-      position: absolute; top: 0; height: 38px; display: block;
-      background: url("images/butterfly.png") no-repeat; background-size: 44px 38px;
-      transition: transform .25s var(--ease);
+    html.cur-on .fern-cur.show { opacity: 1; }
+    .fern-cur-body { transform-origin: 34px 2px; transition: transform .15s ease; }
+    .fern-cur svg {
+      display: block; overflow: visible;
+      filter: drop-shadow(0 0 1.2px rgba(250, 241, 225, .95)) drop-shadow(0 1px 2px rgba(0, 0, 0, .25));
     }
-    .bfly .l { left: 0;    width: 21px; background-position: 0 0;     transform-origin: 100% 50%; }
-    .bfly .b { left: 21px; width: 2px;  background-position: -21px 0; }
-    .bfly .r { left: 23px; width: 21px; background-position: -23px 0; transform-origin: 0 50%; }
-    .bfly-body { width: 100%; height: 100%; transition: transform .15s ease; }
-    .bfly.press .bfly-body { transform: scale(.85); }
-    .bfly.flap .l { animation: flapL .26s ease-in-out infinite alternate; }
-    .bfly.flap .r { animation: flapR .26s ease-in-out infinite alternate; }
-    @keyframes flapL { from { transform: rotateY(0); } to { transform: rotateY(68deg); } }
-    @keyframes flapR { from { transform: rotateY(0); } to { transform: rotateY(-68deg); } }
+    .fern-cur path { stroke: #5E5C24; }
+    .fern-cur .leaves { fill: #8A8635; }
+    [data-theme="dark"] .fern-cur path { stroke: #8A8635; }
+    [data-theme="dark"] .fern-cur .leaves { fill: #A9A447; }
+    [data-theme="dark"] .fern-cur svg { filter: drop-shadow(0 0 1px rgba(0, 0, 0, .7)) drop-shadow(0 1px 2px rgba(0, 0, 0, .4)); }
+    .fern-cur .lf { transform-box: view-box; transition: transform .38s var(--ease); }
+    .fern-cur .lf.r { transform: rotate(-38deg) scale(.8); }
+    .fern-cur .lf.l { transform: rotate(38deg) scale(.8); }
+    .fern-cur.open .lf { transform: none; }
+    .fern-cur.press .fern-cur-body { transform: scale(.88); }
     @media (prefers-reduced-motion: reduce) {
-      .bfly.flap .l, .bfly.flap .r { animation: none; }
-      .bfly.flap .bfly-body { transform: scale(1.15); }
+      .fern-cur .lf { transition: none; }
     }
 
     /* ============================================================
@@ -429,7 +430,28 @@
   </style>
 </head>
 <body>
-  <div class="bfly" aria-hidden="true"><div class="bfly-body"><i class="l"></i><i class="b"></i><i class="r"></i></div></div>
+  <div class="fern-cur" aria-hidden="true"><div class="fern-cur-body">
+    <svg viewBox="4 2 92 96" width="58" height="60">
+      <path d="M48 96 Q44 52 58 5" fill="none" stroke-width="3.5" stroke-linecap="round"/>
+      <g class="leaves">
+          <g class="lf r" style="transform-origin:47.2px 81.8px;transition-delay:0.18s"><ellipse cx="63.4" cy="71.7" rx="17.7" ry="4.8" transform="rotate(-32 63.4 71.7)"/></g>
+          <g class="lf l" style="transform-origin:47.2px 81.8px;transition-delay:0.18s"><ellipse cx="30.9" cy="71.7" rx="17.7" ry="4.8" transform="rotate(212 30.9 71.7)"/></g>
+          <g class="lf r" style="transform-origin:47.2px 71.9px;transition-delay:0.15s"><ellipse cx="62.0" cy="62.6" rx="16.0" ry="4.3" transform="rotate(-32 62.0 62.6)"/></g>
+          <g class="lf l" style="transform-origin:47.2px 71.9px;transition-delay:0.15s"><ellipse cx="32.3" cy="62.6" rx="16.0" ry="4.3" transform="rotate(212 32.3 62.6)"/></g>
+          <g class="lf r" style="transform-origin:47.6px 61.9px;transition-delay:0.12s"><ellipse cx="61.0" cy="53.5" rx="14.4" ry="3.9" transform="rotate(-32 61.0 53.5)"/></g>
+          <g class="lf l" style="transform-origin:47.6px 61.9px;transition-delay:0.12s"><ellipse cx="34.1" cy="53.5" rx="14.4" ry="3.9" transform="rotate(212 34.1 53.5)"/></g>
+          <g class="lf r" style="transform-origin:48.4px 51.8px;transition-delay:0.09s"><ellipse cx="60.5" cy="44.3" rx="12.7" ry="3.4" transform="rotate(-32 60.5 44.3)"/></g>
+          <g class="lf l" style="transform-origin:48.4px 51.8px;transition-delay:0.09s"><ellipse cx="36.4" cy="44.3" rx="12.7" ry="3.4" transform="rotate(212 36.4 44.3)"/></g>
+          <g class="lf r" style="transform-origin:49.8px 41.6px;transition-delay:0.06s"><ellipse cx="60.3" cy="35.0" rx="10.9" ry="2.9" transform="rotate(-32 60.3 35.0)"/></g>
+          <g class="lf l" style="transform-origin:49.8px 41.6px;transition-delay:0.06s"><ellipse cx="39.2" cy="35.0" rx="10.9" ry="2.9" transform="rotate(212 39.2 35.0)"/></g>
+          <g class="lf r" style="transform-origin:51.5px 31.3px;transition-delay:0.03s"><ellipse cx="60.5" cy="25.7" rx="9.1" ry="2.5" transform="rotate(-32 60.5 25.7)"/></g>
+          <g class="lf l" style="transform-origin:51.5px 31.3px;transition-delay:0.03s"><ellipse cx="42.5" cy="25.7" rx="9.1" ry="2.5" transform="rotate(212 42.5 25.7)"/></g>
+          <g class="lf r" style="transform-origin:53.7px 21.0px;transition-delay:0.00s"><ellipse cx="61.2" cy="16.4" rx="7.3" ry="2.2" transform="rotate(-32 61.2 16.4)"/></g>
+          <g class="lf l" style="transform-origin:53.7px 21.0px;transition-delay:0.00s"><ellipse cx="46.3" cy="16.4" rx="7.3" ry="2.2" transform="rotate(212 46.3 16.4)"/></g>
+          <ellipse cx="57.2" cy="7.8" rx="2.6" ry="5.5" transform="rotate(15 57.2 7.8)"/>
+      </g>
+    </svg>
+  </div></div>
   <a class="skip" href="#work">Skip to work</a>
 
   <!-- ===================== HEADER ===================== -->
@@ -902,36 +924,35 @@
         }
       };
     }
-    /* ---------- Butterfly cursor ----------
+    /* ---------- Fern cursor ----------
        Only switches on for a real mouse or trackpad, so phones and
        tablets keep their normal behavior. */
     (function () {
       if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-      const b = document.querySelector(".bfly");
-      const body = b.querySelector(".bfly-body");
-      const HEAD_X = 22, HEAD_Y = 13;          // the butterfly's head is the click point
+      const c = document.querySelector(".fern-cur");
+      const TIP_X = 34, TIP_Y = 2;            // the fern tip is the click point
       const CLICKABLE = "a, button, [role='button'], label, summary, input, select, textarea";
       let x = -100, y = -100, lastX = 0, tilt = 0, raf = null;
 
       function draw() {
-        tilt += ((Math.max(-18, Math.min(18, (x - lastX) * 1.2))) - tilt) * 0.2;   // lean into the direction of travel
+        tilt += ((Math.max(-16, Math.min(16, (x - lastX) * 1.1))) - tilt) * 0.2;   // sway with movement
         lastX = x;
-        b.style.transform = "translate3d(" + (x - HEAD_X) + "px," + (y - HEAD_Y) + "px,0) rotate(" + tilt.toFixed(2) + "deg)";
+        c.style.transform = "translate3d(" + (x - TIP_X) + "px," + (y - TIP_Y) + "px,0) rotate(" + tilt.toFixed(2) + "deg)";
         raf = Math.abs(tilt) > 0.1 ? requestAnimationFrame(draw) : null;
       }
       document.addEventListener("mousemove", (e) => {
         x = e.clientX; y = e.clientY;
-        document.documentElement.classList.add("bfly-on");
-        b.classList.add("show");
+        document.documentElement.classList.add("cur-on");
+        c.classList.add("show");
         if (!raf) raf = requestAnimationFrame(draw);
       }, { passive: true });
       document.addEventListener("mouseover", (e) => {
-        b.classList.toggle("flap", !!(e.target.closest && e.target.closest(CLICKABLE)));
+        c.classList.toggle("open", !!(e.target.closest && e.target.closest(CLICKABLE)));
       });
-      document.addEventListener("mousedown", () => b.classList.add("press"));
-      document.addEventListener("mouseup", () => b.classList.remove("press"));
-      document.documentElement.addEventListener("mouseleave", () => b.classList.remove("show"));
-      document.documentElement.addEventListener("mouseenter", () => b.classList.add("show"));
+      document.addEventListener("mousedown", () => c.classList.add("press"));
+      document.addEventListener("mouseup", () => c.classList.remove("press"));
+      document.documentElement.addEventListener("mouseleave", () => c.classList.remove("show"));
+      document.documentElement.addEventListener("mouseenter", () => c.classList.add("show"));
     })();
   </script>
 </body>
