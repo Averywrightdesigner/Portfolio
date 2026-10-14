@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Avery Wright | UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Avery Wright, UI/UX designer in Kennesaw, GA. B.S. Interactive Design, Kennesaw State University.">
+
+  <!-- Set day/night before the page paints, so there's no flash -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      document.documentElement.classList.add("js");
+    })();
+  </script>
+
+  <!-- Fonts: Bricolage Grotesque (headings), Atkinson Hyperlegible (body), Caveat (handwritten notes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       COLOR TOKENS
+       Day mode first, night mode below. Change a value once and it
+       updates everywhere.
+       ============================================================ */
+    :root {
+      --bg:          #FAF1E1;  /* page background (melted wax cream) */
+      --surface:     #F6E6C2;  /* soft panels */
+      --surface-2:   #EAC891;  /* warm sand */
+      --surface-3:   #FFF8EC;  /* lightest panel */
+      --text:        #3B2617;  /* vintage wood brown */
+      --text-2:      #6E4E38;
+      --accent:      #C1521E;  /* aperol: buttons */
+      --accent-hov:  #AE431E;  /* chile rojo */
+      --on-accent:   #FAF1E1;
+      --accent-text: #A63D17;  /* accent used for small text */
+      --headline:    #D06224;  /* terracotta */
+      --hand:        #C1521E;
+      --orb:         #FCB729;  /* the sun behind your photo (becomes a moon at night) */
+      --tint-1: #F3D3B6;  --thumb-1: #D06224;   /* terracotta project */
+      --tint-2: #E3E0BD;  --thumb-2: #8A8635;   /* olive project */
+      --tint-3: #FBE2A6;  --thumb-3: #FCB729;   /* sunflower project */
+      --chip:        rgba(255, 252, 245, .75);
+      --deep:        #5E5C24;  /* ticker + footer (deep olive) */
+      --deep-2:      #8A8635;
+      --on-deep:     #F6E6C2;
+      --nav-bg:      rgba(250, 241, 225, .85);
+      --pencil-bg:   #FCB729;
+      --pencil-text: #3B2617;
+      --mock:        #FAF1E1;
+    }
+    :root[data-theme="dark"] {
+      --bg:          #21160E;
+      --surface:     #33241A;
+      --surface-2:   #4A3322;
+      --surface-3:   #2A1D14;
+      --text:        #F6E6C2;
+      --text-2:      #CDB394;
+      --accent:      #FCB729;
+      --accent-hov:  #F7B557;
+      --on-accent:   #21160E;
+      --accent-text: #F7B557;
+      --headline:    #E27921;
+      --hand:        #F7B557;
+      --orb:         #F6E6C2;
+      --tint-1: #3D2418;  --thumb-1: #C1521E;
+      --tint-2: #34321B;  --thumb-2: #8A8635;
+      --tint-3: #3D2D14;  --thumb-3: #E0A023;
+      --chip:        rgba(246, 230, 194, .12);
+      --deep:        #3A3916;
+      --deep-2:      #5E5C24;
+      --on-deep:     #F6E6C2;
+      --nav-bg:      rgba(33, 22, 14, .85);
+      --pencil-bg:   #E0A023;
+      --pencil-text: #21160E;
+      --mock:        #F6E6C2;
+    }
+
+    :root {
+      --f-head: "Bricolage Grotesque", system-ui, sans-serif;
+      --f-body: "Atkinson Hyperlegible", system-ui, sans-serif;
+      --f-hand: "Caveat", cursive;
+      --wrap: 1160px;
+      --gutter: clamp(16px, 4vw, 40px);
+      --r-lg: 28px;
+      --r-md: 18px;
+      --ease: cubic-bezier(.22, .8, .24, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font: 400 1.0625rem/1.65 var(--f-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color .5s var(--ease), color .5s var(--ease);
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: var(--accent-text); text-underline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--headline); outline-offset: 3px; border-radius: 6px; }
+    ::selection { background: #FCB729; color: #3B2617; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+    .skip { position: absolute; left: -999px; }
+    .skip:focus { left: 16px; top: 16px; background: var(--surface); padding: 8px 12px; z-index: 99; }
+
+    h1, h2, h3 { font-family: var(--f-head); line-height: 1.02; letter-spacing: -0.025em; font-weight: 800; }
+    .hand { font-family: var(--f-hand); font-weight: 600; color: var(--hand); line-height: 1.2; }
+
+    /* Buttons: solid fills, no outlines */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+      font: 700 0.95rem var(--f-body);
+      padding: 11px 20px; border-radius: 999px; border: 0;
+      background: var(--surface); color: var(--text);
+      text-decoration: none; cursor: pointer;
+      transition: background-color .25s var(--ease), transform .25s var(--ease);
+    }
+    .btn:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .btn.primary { background: var(--accent); color: var(--on-accent); }
+    .btn.primary:hover { background: var(--accent-hov); }
+
+    /* Round icon buttons in the header */
+    .icon-btn {
+      width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer;
+      display: grid; place-items: center;
+      background: var(--surface); color: var(--text);
+      transition: background-color .25s var(--ease), transform .25s var(--ease);
+    }
+    .icon-btn:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .icon-btn svg { width: 20px; height: 20px; }
+    .icon-btn[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+
+    /* theme icon: moon by day, sun by night */
+    .i-sun { display: none; }
+    [data-theme="dark"] .i-sun { display: block; }
+    [data-theme="dark"] .i-moon { display: none; }
+
+    /* music icon: note when off, bouncing bars when on */
+    .eq { display: none; gap: 3px; align-items: end; height: 16px; }
+    .eq i { width: 3px; background: currentColor; border-radius: 2px; height: 40%; animation: eq 1s ease-in-out infinite; }
+    .eq i:nth-child(2) { animation-delay: -.4s; }
+    .eq i:nth-child(3) { animation-delay: -.7s; }
+    @keyframes eq { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+    #musicBtn[aria-pressed="true"] .eq { display: flex; }
+    #musicBtn[aria-pressed="true"] .i-note { display: none; }
+
+    /* ============================================================
+       NAV
+       ============================================================ */
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      background: var(--nav-bg);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      transition: background-color .5s var(--ease);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+    .logo {
+      font: 800 1.25rem var(--f-head); color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 10px; white-space: nowrap;
+    }
+    .logo-sun { width: 22px; height: 22px; border-radius: 50%; background: #FCB729; box-shadow: 6px 0 0 -2px #D06224; flex: none; }
+    .nav ul { display: flex; gap: 28px; list-style: none; }
+    .nav ul a { color: var(--text); text-decoration: none; font-weight: 700; position: relative; }
+    .nav ul a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 3px; border-radius: 3px;
+      background: #FCB729; transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease);
+    }
+    .nav ul a:hover::after, .nav ul a.active::after { transform: scaleX(1); }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero { padding: clamp(32px, 6vw, 80px) 0 clamp(48px, 7vw, 88px); }
+    .hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(36px, 6vw, 88px); align-items: center; }
+    .hero h1 { font-size: clamp(3.6rem, 10.5vw, 8rem); }
+    .hero h1 .last { color: var(--headline); transition: color .5s var(--ease); }
+    .hero .quote { font-size: clamp(1.55rem, 2.7vw, 2.05rem); margin: 20px 0 28px; max-width: 26ch; transform: rotate(-1.5deg); transform-origin: left; }
+    .facts { list-style: none; display: grid; gap: 8px; margin-bottom: 30px; }
+    .facts li { display: flex; flex-wrap: wrap; column-gap: 10px; align-items: baseline; }
+    .facts b { font-family: var(--f-head); font-weight: 700; white-space: nowrap; }
+    .facts span { color: var(--text-2); }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    /* Photo in an arch, with a sun (or moon) behind it */
+    .portrait { position: relative; isolation: isolate; max-width: 440px; justify-self: center; width: 100%; }
+    .portrait .orb {
+      position: absolute; z-index: -1; width: 48%; aspect-ratio: 1; border-radius: 50%;
+      top: -5%; right: -5%; background: var(--orb);
+      transition: background-color .6s var(--ease);
+    }
+    .portrait .arch {
+      aspect-ratio: 4 / 5; overflow: hidden;
+      border-radius: 50% 50% var(--r-lg) var(--r-lg) / 40% 40% var(--r-lg) var(--r-lg);
+      background: var(--surface-2);
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+    .portrait figcaption { font-family: var(--f-hand); font-size: 1.45rem; color: var(--text-2); padding: 12px 6px 0; text-align: center; }
+
+    /* ============================================================
+       SKILLS TICKER
+       ============================================================ */
+    .ticker { background: var(--deep); color: var(--on-deep); overflow: hidden; padding: 16px 0; transition: background-color .5s var(--ease); }
+    .ticker-track { display: flex; width: max-content; }
+    .ticker-track span { font: 700 1.15rem var(--f-head); padding: 0 22px; white-space: nowrap; display: flex; align-items: center; gap: 22px; }
+    .ticker-track span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #FCB729; }
+
+    /* ============================================================
+       SECTIONS
+       ============================================================ */
+    section { padding: clamp(56px, 8vw, 112px) 0; }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: clamp(28px, 4vw, 44px); flex-wrap: wrap; }
+    .sec-head h2 { font-size: clamp(2.4rem, 6vw, 4rem); }
+    .sec-head .hand { font-size: 1.6rem; }
+
+    /* ---------- Projects ---------- */
+    .projects { display: grid; gap: clamp(20px, 3vw, 32px); }
+    .project {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(20px, 4vw, 48px);
+      border-radius: var(--r-lg); padding: clamp(18px, 3vw, 32px); align-items: center;
+      transition: background-color .5s var(--ease);
+    }
+    .project.t-1 { background: var(--tint-1); }
+    .project.t-2 { background: var(--tint-2); }
+    .project.t-3 { background: var(--tint-3); }
+    .project:nth-child(even) .thumb { order: 2; }
+
+    .thumb { aspect-ratio: 4 / 3; border-radius: var(--r-md); overflow: hidden; display: grid; place-items: center; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .t-1 .thumb { background: var(--thumb-1); }
+    .t-2 .thumb { background: var(--thumb-2); }
+    .t-3 .thumb { background: var(--thumb-3); }
+
+    /* Placeholder screens. Delete each .mock once you add a real image. */
+    .mock { background: var(--mock); border-radius: 14px; padding: 14px; display: grid; gap: 9px; }
+    .mock i { display: block; height: 10px; border-radius: 6px; background: #EAC891; }
+    .mock i.h { width: 50%; height: 14px; background: #3B2617; }
+    .mock i.btnbar { width: 45%; height: 24px; background: #C1521E; border-radius: 999px; }
+    .mock.phone { width: 34%; aspect-ratio: 9 / 17; align-content: start; border-radius: 22px; }
+    .mock.phone i.img { height: 40%; min-height: 60px; border-radius: 10px; }
+    .mock.desk { width: 76%; }
+    .mock.desk .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .mock.desk .row i { height: 46px; }
+    .mock.cards { width: 70%; background: transparent; padding: 0; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .mock.cards b { display: grid; gap: 8px; align-content: start; background: var(--mock); border-radius: 14px; padding: 12px; min-height: 120px; }
+    .mock.cards b:first-child { transform: rotate(-4deg); }
+    .mock.cards b:last-child { transform: rotate(3deg) translateY(10px); }
+    .mock.cards b i:first-child { height: 46px; background: #D06224; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tag { font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; background: var(--chip); }
+    .project h3 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); margin-bottom: 10px; }
+    .project .blurb { color: var(--text-2); margin-bottom: 20px; max-width: 52ch; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 32px; margin-bottom: 22px; }
+    .meta dt { font-size: 0.85rem; color: var(--text-2); }
+    .meta dd { font-weight: 700; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .project .btn:not(.primary) { background: var(--chip); }
+    .project .btn:not(.primary):hover { background: var(--bg); }
+    .soon { font-family: var(--f-hand); font-size: 1.45rem; color: var(--hand); }
+
+    /* ---------- About ---------- */
+    .bento {
+      display: grid; gap: clamp(14px, 2vw, 20px);
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas: "bio certs" "skills pencil";
+    }
+    .tile { border-radius: var(--r-lg); padding: clamp(22px, 3vw, 34px); transition: background-color .5s var(--ease); }
+    .tile h3 { font-size: 1.45rem; margin-bottom: 12px; letter-spacing: -0.015em; }
+    .tile p { max-width: 62ch; }
+    .tile p + p { margin-top: 14px; }
+
+    .bio    { grid-area: bio; background: var(--surface); }
+    .bio p:first-of-type { font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.55; }
+    .certs  { grid-area: certs; background: var(--surface-2); }
+    .skills { grid-area: skills; background: var(--surface-3); }
+    .pencil { grid-area: pencil; background: var(--pencil-bg); color: var(--pencil-text); display: flex; flex-direction: column; }
+    .pencil .hand { color: var(--pencil-text); font-size: 1.6rem; margin-top: auto; padding-top: 16px; }
+
+    .plain { list-style: none; display: grid; gap: 10px; }
+    .plain li span { display: block; font-size: 0.9rem; opacity: .8; }
+    .skill-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .skill-groups h4 { font: 700 1.05rem var(--f-head); margin-bottom: 10px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
+    .pills li { font-size: 0.88rem; padding: 4px 11px; border-radius: 999px; background: var(--surface); }
+
+    /* ---------- Experience & education ---------- */
+    .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); }
+    .timeline h3 { font-size: 1.6rem; margin-bottom: 20px; color: var(--headline); }
+    .entries { list-style: none; display: grid; gap: 14px; }
+    .entry { background: var(--surface); border-radius: var(--r-md); padding: 20px 22px; transition: background-color .5s var(--ease); }
+    .entry .top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+    .entry .org { font: 700 1.2rem var(--f-head); }
+    .entry .when { color: var(--text-2); font-size: 0.92rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .entry .role { color: var(--accent-text); font-weight: 700; margin-bottom: 6px; }
+    .entry p, .entry li { color: var(--text-2); }
+    .entry ul.honors { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .entry ul.honors li { font-size: 0.88rem; padding: 3px 11px; border-radius: 999px; background: var(--bg); color: var(--text); }
+    .entry ul.honors li.star { background: #FCB729; color: #3B2617; font-weight: 700; }
+
+    /* ---------- Footer ---------- */
+    footer { background: var(--deep); color: var(--on-deep); padding: clamp(56px, 8vw, 96px) 0 32px; overflow: hidden; position: relative; transition: background-color .5s var(--ease); }
+    footer .wrap { position: relative; z-index: 1; }
+    footer h2 { font-size: clamp(2.8rem, 8vw, 5.5rem); color: var(--on-deep); margin-bottom: 12px; }
+    footer .hand { color: #FCB729; font-size: 1.8rem; }
+    footer a { color: var(--on-deep); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 64px; }
+    footer .btn { background: rgba(246, 230, 194, .14); color: var(--on-deep); }
+    footer .btn:hover { background: #FCB729; color: #3B2617; }
+    footer .btn.primary { background: #FCB729; color: #3B2617; }
+    footer .btn.primary:hover { background: #F7B557; }
+    .foot-sun { position: absolute; right: -80px; bottom: -140px; width: 380px; height: 380px; border-radius: 50%; background: var(--deep-2); opacity: .6; }
+    .foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.92rem; opacity: .85; }
+
+    /* ============================================================
+       MOTION: reveals on scroll. All of it turns off for people
+       who set "reduce motion" on their device.
+       ============================================================ */
+    .js [data-reveal] {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+      transition-delay: var(--d, 0s);
+    }
+    .js [data-reveal].in { opacity: 1; transform: none; }
+    .ticker-track { animation: slide 38s linear infinite; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+    .js .portrait.in .orb { animation: rise 1.4s var(--ease) .25s both; }
+    @keyframes rise { from { transform: translateY(60%) scale(.85); opacity: 0; } to { transform: none; opacity: 1; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+      .ticker-track, .js .portrait.in .orb, .eq i { animation: none; }
+      .btn:hover, .icon-btn:hover { transform: none; }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 960px) {
+      .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "bio bio" "certs pencil" "skills skills"; }
+    }
+    @media (max-width: 860px) {
+      .hero .wrap, .project, .timeline { grid-template-columns: 1fr; }
+      .project:nth-child(even) .thumb { order: 0; }
+      .portrait { max-width: 380px; }
+      .nav ul { gap: 20px; }
+    }
+    @media (max-width: 760px) {
+      .nav ul { display: none; }
+      .skill-groups { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .bento { grid-template-columns: 1fr; grid-template-areas: "bio" "certs" "skills" "pencil"; }
+      .btn { padding: 10px 16px; }
+      .nav .btn { padding: 9px 14px; font-size: 0.875rem; }
+      .icon-btn { width: 38px; height: 38px; }
+      .logo { font-size: 1.1rem; }
+      .portrait { max-width: 320px; }
+    }
+    @media (max-width: 370px) {
+      .logo { font-size: 1rem; gap: 8px; }
+      .nav-right { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="#top"><span class="logo-sun" aria-hidden="true"></span>Avery Wright</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <button class="icon-btn" id="musicBtn" aria-pressed="false" aria-label="Play music" title="Play music">
+          <svg class="i-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+        <button class="icon-btn" id="themeBtn" aria-label="Switch to night mode" title="Switch to night mode">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-label="Introduction">
+      <div class="wrap">
+        <div>
+          <h1 data-reveal>Avery<br><span class="last">Wright.</span></h1>
+          <p class="hand quote" data-reveal style="--d:.12s">“I enjoy the behind the scenes work and crafting designs that make a real impact.”</p>
+          <ul class="facts" data-reveal style="--d:.2s">
+            <li><b>UI/UX Designer</b><span>open to full-time roles</span></li>
+            <li><b>B.S. Interactive Design</b><span>Kennesaw State University, 2026</span></li>
+            <li><b>Based in</b><span>Kennesaw, GA</span></li>
+          </ul>
+          <div class="quick-links" data-reveal style="--d:.28s">
+            <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+            <!-- Replace with your LinkedIn profile URL -->
+            <a class="btn" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn" href="mailto:averywrightdesigner@gmail.com">Email ↗</a>
+          </div>
+        </div>
+
+        <figure class="portrait" data-reveal style="--d:.15s">
+          <span class="orb" aria-hidden="true"></span>
+          <div class="arch">
+            <img src="images/avery.jpg" width="900" height="1347" alt="Avery Wright smiling in front of a colorful mural, holding an iced coffee and a sticker-covered laptop">
+          </div>
+          <figcaption>it's <span id="clock">--:--</span> in Kennesaw, GA</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS TICKER ===================== -->
+    <div class="ticker" aria-label="Skills: UI design, UX research, prototyping, design systems, interaction design, usability testing, accessibility (WCAG 2.2), motion design">
+      <div class="ticker-track" aria-hidden="true">
+        <span>UI design</span><span>UX research</span><span>Prototyping</span><span>Design systems</span><span>Interaction design</span><span>Usability testing</span><span>Accessibility (WCAG 2.2)</span><span>Motion design</span>
+        <span>UI design</span><span>UX research</span><span>Prototyping</span><span>Design systems</span><span>Interaction design</span><span>Usability testing</span><span>Accessibility (WCAG 2.2)</span><span>Motion design</span>
+      </div>
+    </div>
+
+    <!-- ===================== WORK ===================== -->
+    <section id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2 id="work-title">Selected work</h2>
+          <span class="hand">a few projects I'm proud of</span>
+        </div>
+
+        <div class="projects">
+          <!-- PROJECT 1. Copy an <article> block to add more. Color options: t-1 (terracotta), t-2 (olive), t-3 (sunflower) -->
+          <article class="project t-1" data-reveal>
+            <div class="thumb">
+              <!-- Replace the .mock with: <img src="images/project-1.jpg" alt="What the screen shows"> -->
+              <div class="mock phone" aria-hidden="true"><i class="h"></i><i class="img"></i><i></i><i style="width:70%"></i><i class="btnbar"></i></div>
+            </div>
+            <div>
+              <div class="tags"><span class="tag">UI Design</span><span class="tag">Mobile</span><span class="tag">Prototyping</span></div>
+              <h3>Project title</h3>
+              <p class="blurb">One or two sentences: the problem, what you designed, and what changed. Lead with a result if you have one, like "testers finished sign-up 2x faster."</p>
+              <dl class="meta">
+                <div><dt>Role</dt><dd>UI/UX Designer</dd></div>
+                <div><dt>Team</dt><dd>Solo</dd></div>
+                <div><dt>Timeline</dt><dd>8 weeks</dd></div>
+              </dl>
+              <div class="actions"><a class="btn primary" href="project-one.html">Read case study</a></div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2 -->
+          <article class="project t-2" data-reveal>
+            <div class="thumb">
+              <div class="mock desk" aria-hidden="true"><i class="h"></i><i></i><div class="row"><i></i><i></i><i></i></div><i class="btnbar"></i></div>
+            </div>
+            <div>
+              <div class="tags"><span class="tag">UX Research</span><span class="tag">Usability Testing</span><span class="tag">Web</span></div>
+              <h3>Project title</h3>
+              <p class="blurb">What you researched, who you talked to, and what you learned that shaped the design. Recruiters like seeing your process.</p>
+              <dl class="meta">
+                <div><dt>Role</dt><dd>UX Researcher</dd></div>
+                <div><dt>Team</dt><dd>4 designers</dd></div>
+                <div><dt>Timeline</dt><dd>1 semester</dd></div>
+              </dl>
+              <div class="actions">
+                <a class="btn primary" href="project-two.html">Read case study</a>
+                <a class="btn" href="https://www.figma.com/" target="_blank" rel="noopener">View prototype ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3 -->
+          <article class="project t-3" data-reveal>
+            <div class="thumb">
+              <div class="mock cards" aria-hidden="true"><b><i></i><i></i><i style="width:60%"></i></b><b><i></i><i></i><i style="width:60%"></i></b></div>
+            </div>
+            <div>
+              <div class="tags"><span class="tag">Design Systems</span><span class="tag">Motion</span><span class="tag">Accessibility</span></div>
+              <h3>Project title</h3>
+              <p class="blurb">Works in progress are fine to show. Mark them clearly so reviewers know what to expect.</p>
+              <dl class="meta">
+                <div><dt>Role</dt><dd>Visual Designer</dd></div>
+                <div><dt>Team</dt><dd>2 people</dd></div>
+                <div><dt>Timeline</dt><dd>Ongoing</dd></div>
+              </dl>
+              <div class="actions"><span class="soon">case study coming soon</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2 id="about-title">About me</h2>
+          <span class="hand">hi, nice to meet you!</span>
+        </div>
+
+        <div class="bento">
+          <div class="tile bio" data-reveal>
+            <p>I'm Avery, a UI/UX designer from Kennesaw, Georgia. I graduated from Kennesaw State University in 2026 with a B.S. in Interactive Design.</p>
+            <p>My favorite part of design is the work most people never see: talking to users, sorting through research, mapping out flows, and testing prototypes until they make sense to the people who will use them.</p>
+            <p>Before design, I spent over five years working in coffee shops and restaurants. Running a busy Starbucks bar and serving tables taught me how to figure out what people need, and how to stay calm when things get hectic. I use both of those skills every day as a designer.</p>
+            <p>I'm looking for a full-time role where I can keep learning from a great team and design things that help people.</p>
+          </div>
+
+          <div class="tile certs" data-reveal style="--d:.1s">
+            <h3>Certifications</h3>
+            <ul class="plain">
+              <li>Predictive Project Management <span>2026</span></li>
+              <li>CITI Human Research Certification <span>2025</span></li>
+            </ul>
+          </div>
+
+          <div class="tile skills" data-reveal>
+            <h3>What I work with</h3>
+            <div class="skill-groups">
+              <div>
+                <h4>Design</h4>
+                <ul class="pills"><li>UI design</li><li>UX design</li><li>Wireframing</li><li>Prototyping</li><li>Interaction design</li><li>Design systems</li><li>Visual design</li><li>Motion design</li></ul>
+              </div>
+              <div>
+                <h4>Methods</h4>
+                <ul class="pills"><li>User research</li><li>User flows</li><li>Information architecture</li><li>Usability testing</li><li>Accessibility (WCAG 2.2)</li><li>Agile &amp; lean</li></ul>
+              </div>
+              <div>
+                <h4>Tools</h4>
+                <ul class="pills"><li>Figma</li><li>Figma Make</li><li>FigJam</li><li>Framer</li><li>Photoshop</li><li>Illustrator</li><li>After Effects</li><li>Rive</li><li>Canva</li></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tile pencil" data-reveal style="--d:.1s">
+            <h3>Off the clock</h3>
+            <p>When I'm not designing, I'm drawing. I do photorealistic pencil illustrations, and a single piece can take me hours of slow, careful shading.</p>
+            <!-- Add a photo of one of your drawings here: <img src="images/drawing.jpg" alt="..."> -->
+            <p class="hand">ask to see my sketchbook!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE & EDUCATION ===================== -->
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="wrap">
+        <div class="sec-head" data-reveal><h2 id="exp-title">Experience</h2></div>
+        <div class="timeline">
+          <div data-reveal>
+            <h3>Work</h3>
+            <ul class="entries">
+              <li class="entry">
+                <div class="top"><span class="org">Pure Taqueria</span><span class="when">Mar 2025 - Present</span></div>
+                <div class="role">Server, Woodstock GA</div>
+                <p>I serve guests in a busy, high-volume restaurant. I work closely with the kitchen and front-of-house team to keep service running smoothly, and I look for small ways to make each visit better.</p>
+              </li>
+              <li class="entry">
+                <div class="top"><span class="org">Starbucks</span><span class="when">Sep 2020 - Mar 2024</span></div>
+                <div class="role">Barista, Kennesaw GA</div>
+                <p>I trained and onboarded new baristas and kept service consistent through long morning rushes.</p>
+              </li>
+            </ul>
+          </div>
+          <div data-reveal style="--d:.12s">
+            <h3>Education</h3>
+            <ul class="entries">
+              <li class="entry">
+                <div class="top"><span class="org">Kennesaw State University</span><span class="when">2024 - 2026</span></div>
+                <div class="role">B.S. Interactive Design</div>
+                <ul class="honors">
+                  <li class="star">Magna Cum Laude</li>
+                  <li>3.66 GPA</li>
+                  <li>President's List 2024 - 2025</li>
+                  <li>Dean's List 2025 - 2026</li>
+                </ul>
+              </li>
+              <li class="entry">
+                <div class="top"><span class="org">Arizona State University</span><span class="when">2021 - 2023</span></div>
+                <div class="role">Online coursework</div>
+                <ul class="honors"><li>Dean's List 2023</li></ul>
+              </li>
+              <li class="entry">
+                <div class="top"><span class="org">University of North Georgia</span><span class="when">2020 - 2021</span></div>
+                <div class="role">Coursework, Cumming GA</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <footer id="contact">
+    <div class="foot-sun" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2 data-reveal>Let's talk.</h2>
+      <p class="hand" data-reveal style="--d:.1s">Thanks for stopping by. Say hello anytime!</p>
+      <div class="contact-links" data-reveal style="--d:.18s">
+        <a class="btn primary" href="mailto:averywrightdesigner@gmail.com">averywrightdesigner@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year">2026</span> Avery Wright. Designed and built by me.</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- Clock + year ---------- */
+    function tick() {
+      const t = new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" });
+      document.getElementById("clock").textContent = t.toLowerCase();
+    }
+    tick(); setInterval(tick, 30000);
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ---------- Scroll reveals ---------- */
+    const reveals = document.querySelectorAll("[data-reveal]");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      reveals.forEach((el) => io.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add("in"));
+    }
+
+    /* ---------- Underline the nav link for the section on screen ---------- */
+    const links = [...document.querySelectorAll(".nav ul a")];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["work", "about", "experience", "contact"].forEach((id) => spy.observe(document.getElementById(id)));
+
+    /* ---------- Day / night ---------- */
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    function labelTheme() {
+      const next = root.dataset.theme === "dark" ? "day" : "night";
+      themeBtn.setAttribute("aria-label", "Switch to " + next + " mode");
+      themeBtn.title = "Switch to " + next + " mode";
+    }
+    labelTheme();
+    themeBtn.addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      labelTheme();
+    });
+
+    /* ---------- Music ----------
+       By default this plays a soft lo-fi loop generated right in the
+       browser, so there's no audio file to host or license.
+       To use your own song instead, put an .mp3 in the folder and set
+       MUSIC_FILE to its name, e.g. "music.mp3". */
+    const MUSIC_FILE = "";
+
+    const musicBtn = document.getElementById("musicBtn");
+    const player = MUSIC_FILE ? fileMusic(MUSIC_FILE) : lofiMusic();
+    musicBtn.addEventListener("click", () => {
+      const on = musicBtn.getAttribute("aria-pressed") !== "true";
+      on ? player.play() : player.stop();
+      musicBtn.setAttribute("aria-pressed", on);
+      musicBtn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+      musicBtn.title = on ? "Pause music" : "Play music";
+    });
+
+    function fileMusic(src) {
+      const a = new Audio(src);
+      a.loop = true; a.volume = 0.4;
+      return { play: () => a.play(), stop: () => a.pause() };
+    }
+
+    function lofiMusic() {
+      let ctx, out, bus, noise, timer, stopTimer, nextTime = 0, step = 0;
+      const BPM = 72, beat = 60 / BPM;
+      // Fmaj7, Em7, Dm7, Cmaj7 (MIDI note numbers)
+      const chords = [[53, 57, 60, 64], [52, 55, 59, 62], [50, 53, 57, 60], [48, 52, 55, 59]];
+      const roots = [41, 40, 38, 36];
+      const melody = [72, 74, 76, 79, 81, 84];
+      const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+      function setup() {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        out = ctx.createGain(); out.gain.value = 0;
+        const tone = ctx.createBiquadFilter(); tone.type = "lowpass"; tone.frequency.value = 2000;
+        bus = ctx.createGain();
+        const delay = ctx.createDelay(); delay.delayTime.value = beat * 0.75;
+        const fb = ctx.createGain(); fb.gain.value = 0.3;
+        const wet = ctx.createGain(); wet.gain.value = 0.25;
+        bus.connect(tone);
+        bus.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(wet); wet.connect(tone);
+        tone.connect(out); out.connect(ctx.destination);
+
+        // white noise, reused for hats and vinyl crackle
+        const len = ctx.sampleRate * 2;
+        noise = ctx.createBuffer(1, len, ctx.sampleRate);
+        const d = noise.getChannelData(0);
+        for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+
+        const crackleBuf = ctx.createBuffer(1, len, ctx.sampleRate);
+        const c = crackleBuf.getChannelData(0);
+        for (let i = 0; i < len; i++) c[i] = (Math.random() * 2 - 1) * 0.01 + (Math.random() < 0.0005 ? (Math.random() * 2 - 1) * 0.4 : 0);
+        const crackle = ctx.createBufferSource(); crackle.buffer = crackleBuf; crackle.loop = true;
+        const hp = ctx.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 1200;
+        const cg = ctx.createGain(); cg.gain.value = 0.35;
+        crackle.connect(hp); hp.connect(cg); cg.connect(out); crackle.start();
+      }
+
+      function keys(m, t, dur, vel) {
+        [["triangle", 0], ["sine", 6]].forEach(([type, det]) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = type; o.frequency.value = hz(m); o.detune.value = det;
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(vel, t + 0.05);
+          g.gain.exponentialRampToValueAtTime(vel * 0.35, t + 0.9);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+          o.connect(g); g.connect(bus); o.start(t); o.stop(t + dur + 0.05);
+        });
+      }
+      function bass(m, t) {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "sine"; o.frequency.value = hz(m);
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.2, t + 0.03);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + beat * 1.8);
+        o.connect(g); g.connect(out); o.start(t); o.stop(t + beat * 2);
+      }
+      function kick(t) {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.frequency.setValueAtTime(110, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.14);
+        g.gain.setValueAtTime(0.38, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+        o.connect(g); g.connect(out); o.start(t); o.stop(t + 0.32);
+      }
+      function hit(t, freq, type, vol, len) {
+        const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+        s.buffer = noise; f.type = type; f.frequency.value = freq;
+        g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + len);
+        s.connect(f); f.connect(g); g.connect(out); s.start(t, Math.random()); s.stop(t + len + 0.02);
+      }
+
+      function schedule(t) {
+        const s = step % 32, ci = Math.floor(s / 8), pos = s % 8;
+        if (s % 2) t += beat * 0.09;                       // a little swing
+        if (pos === 0) chords[ci].forEach((m, i) => keys(m, t + i * 0.03, beat * 3.9, 0.045));
+        if (pos === 0 || pos === 4) bass(roots[ci], t);
+        if (pos === 0 || pos === 5) kick(t);
+        if (pos === 2 || pos === 6) hit(t, 1800, "bandpass", 0.12, 0.14);  // soft snare
+        if (s % 2) hit(t, 7000, "highpass", 0.03, 0.05);                   // hi-hat
+        if (pos % 2 === 0 && Math.random() < 0.3) keys(melody[Math.floor(Math.random() * melody.length)], t, beat * 1.6, 0.03);
+        step++;
+      }
+      function loop() {
+        while (nextTime < ctx.currentTime + 0.3) { schedule(nextTime); nextTime += beat / 2; }
+      }
+
+      return {
+        play() {
+          if (!ctx) setup();
+          clearTimeout(stopTimer);
+          ctx.resume();
+          if (!timer) { nextTime = ctx.currentTime + 0.1; timer = setInterval(loop, 60); }
+          out.gain.cancelScheduledValues(ctx.currentTime);
+          out.gain.setTargetAtTime(0.5, ctx.currentTime, 0.6);   // fade in
+        },
+        stop() {
+          if (!ctx) return;
+          out.gain.cancelScheduledValues(ctx.currentTime);
+          out.gain.setTargetAtTime(0, ctx.currentTime, 0.25);    // fade out
+          stopTimer = setTimeout(() => { clearInterval(timer); timer = null; ctx.suspend(); }, 1200);
+        }
+      };
+    }
+  </script>
+</body>
+</html>
