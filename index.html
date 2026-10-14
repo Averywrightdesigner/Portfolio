@@ -293,10 +293,10 @@
 
     .plain { list-style: none; display: grid; gap: 10px; }
     .plain li span { display: block; font-size: 0.9rem; opacity: .8; }
-    .skill-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .skill-groups { display: grid; gap: 20px; }
     .skill-groups h4 { font: 700 1.05rem var(--f-head); margin-bottom: 10px; }
     .pills { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
-    .pills li { font-size: 0.88rem; padding: 4px 11px; border-radius: 999px; background: var(--surface); }
+    .pills li { font-size: 0.88rem; padding: 5px 12px; border-radius: 999px; background: var(--surface); white-space: nowrap; }
 
     /* ---------- Experience & education ---------- */
     .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); }
@@ -362,7 +362,6 @@
     }
     @media (max-width: 760px) {
       .nav ul { display: none; }
-      .skill-groups { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .bento { grid-template-columns: 1fr; grid-template-areas: "bio" "certs" "skills" "fun"; }
