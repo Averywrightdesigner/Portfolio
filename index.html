@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Avery Wright | UI/UX Designer</title>
-  <meta name="description" content="Portfolio of Avery Wright, UI/UX designer in Kennesaw, GA. B.S. Interactive Design, Kennesaw State University.">
+  <title>Avery Wright | User Interface and Research Designer</title>
+  <meta name="description" content="Portfolio of Avery Wright, user interface and research designer in Kennesaw, GA. B.S. Interactive Design, Kennesaw State University.">
 
   <!-- Set day/night before the page paints, so there's no flash -->
   <script>
@@ -17,10 +17,10 @@
     })();
   </script>
 
-  <!-- Fonts: Bricolage Grotesque (headings), Atkinson Hyperlegible (body), Caveat (handwritten notes) -->
+  <!-- Fonts: Bricolage Grotesque (headings), Atkinson Hyperlegible (body), Gelasio (serif accent notes) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Gelasio:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================
@@ -50,8 +50,8 @@
       --deep-2:      #8A8635;
       --on-deep:     #F6E6C2;
       --nav-bg:      rgba(250, 241, 225, .85);
-      --pencil-bg:   #FCB729;
-      --pencil-text: #3B2617;
+      --fun-bg:   #FCB729;
+      --fun-text: #3B2617;
       --mock:        #FAF1E1;
     }
     :root[data-theme="dark"] {
@@ -76,15 +76,15 @@
       --deep-2:      #5E5C24;
       --on-deep:     #F6E6C2;
       --nav-bg:      rgba(33, 22, 14, .85);
-      --pencil-bg:   #E0A023;
-      --pencil-text: #21160E;
+      --fun-bg:   #E0A023;
+      --fun-text: #21160E;
       --mock:        #F6E6C2;
     }
 
     :root {
       --f-head: "Bricolage Grotesque", system-ui, sans-serif;
       --f-body: "Atkinson Hyperlegible", system-ui, sans-serif;
-      --f-hand: "Caveat", cursive;
+      --f-hand: "Gelasio", Georgia, serif;
       --wrap: 1160px;
       --gutter: clamp(16px, 4vw, 40px);
       --r-lg: 28px;
@@ -112,7 +112,7 @@
     .skip:focus { left: 16px; top: 16px; background: var(--surface); padding: 8px 12px; z-index: 99; }
 
     h1, h2, h3 { font-family: var(--f-head); line-height: 1.02; letter-spacing: -0.025em; font-weight: 800; }
-    .hand { font-family: var(--f-hand); font-weight: 600; color: var(--hand); line-height: 1.2; }
+    .hand { font-family: var(--f-hand); font-style: italic; font-weight: 500; color: var(--hand); line-height: 1.35; letter-spacing: -0.005em; }
 
     /* Buttons: solid fills, no outlines */
     .btn {
@@ -166,7 +166,8 @@
       font: 800 1.25rem var(--f-head); color: var(--text); text-decoration: none;
       display: flex; align-items: center; gap: 10px; white-space: nowrap;
     }
-    .logo-sun { width: 22px; height: 22px; border-radius: 50%; background: #FCB729; box-shadow: 6px 0 0 -2px #D06224; flex: none; }
+    .logo-star { width: 44px; height: 44px; flex: none; transition: transform .5s var(--ease); }
+    .logo:hover .logo-star { transform: rotate(18deg); }
     .nav ul { display: flex; gap: 28px; list-style: none; }
     .nav ul a { color: var(--text); text-decoration: none; font-weight: 700; position: relative; }
     .nav ul a::after {
@@ -183,7 +184,7 @@
     .hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(36px, 6vw, 88px); align-items: center; }
     .hero h1 { font-size: clamp(3.6rem, 10.5vw, 8rem); }
     .hero h1 .last { color: var(--headline); transition: color .5s var(--ease); }
-    .hero .quote { font-size: clamp(1.55rem, 2.7vw, 2.05rem); margin: 20px 0 28px; max-width: 26ch; transform: rotate(-1.5deg); transform-origin: left; }
+    .hero .quote { font-size: clamp(1.25rem, 2.1vw, 1.6rem); margin: 22px 0 28px; max-width: 30ch; }
     .facts { list-style: none; display: grid; gap: 8px; margin-bottom: 30px; }
     .facts li { display: flex; flex-wrap: wrap; column-gap: 10px; align-items: baseline; }
     .facts b { font-family: var(--f-head); font-weight: 700; white-space: nowrap; }
@@ -203,7 +204,7 @@
       background: var(--surface-2);
     }
     .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
-    .portrait figcaption { font-family: var(--f-hand); font-size: 1.45rem; color: var(--text-2); padding: 12px 6px 0; text-align: center; }
+    .portrait figcaption { font-family: var(--f-hand); font-style: italic; font-size: 1.05rem; color: var(--text-2); padding: 12px 6px 0; text-align: center; }
 
     /* ============================================================
        SKILLS TICKER
@@ -219,7 +220,7 @@
     section { padding: clamp(56px, 8vw, 112px) 0; }
     .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: clamp(28px, 4vw, 44px); flex-wrap: wrap; }
     .sec-head h2 { font-size: clamp(2.4rem, 6vw, 4rem); }
-    .sec-head .hand { font-size: 1.6rem; }
+    .sec-head .hand { font-size: 1.2rem; }
 
     /* ---------- Projects ---------- */
     .projects { display: grid; gap: clamp(20px, 3vw, 32px); }
@@ -265,13 +266,13 @@
     .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .project .btn:not(.primary) { background: var(--chip); }
     .project .btn:not(.primary):hover { background: var(--bg); }
-    .soon { font-family: var(--f-hand); font-size: 1.45rem; color: var(--hand); }
+    .soon { font-family: var(--f-hand); font-style: italic; font-size: 1.1rem; color: var(--hand); }
 
     /* ---------- About ---------- */
     .bento {
       display: grid; gap: clamp(14px, 2vw, 20px);
-      grid-template-columns: 2fr 1fr;
-      grid-template-areas: "bio certs" "skills pencil";
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas: "bio bio bio bio certs certs" "skills skills skills fun fun fun";
     }
     .tile { border-radius: var(--r-lg); padding: clamp(22px, 3vw, 34px); transition: background-color .5s var(--ease); }
     .tile h3 { font-size: 1.45rem; margin-bottom: 12px; letter-spacing: -0.015em; }
@@ -282,8 +283,8 @@
     .bio p:first-of-type { font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.55; }
     .certs  { grid-area: certs; background: var(--surface-2); }
     .skills { grid-area: skills; background: var(--surface-3); }
-    .pencil { grid-area: pencil; background: var(--pencil-bg); color: var(--pencil-text); display: flex; flex-direction: column; }
-    .pencil .hand { color: var(--pencil-text); font-size: 1.6rem; margin-top: auto; padding-top: 16px; }
+    .fun { grid-area: fun; background: var(--fun-bg); color: var(--fun-text); display: flex; flex-direction: column; }
+    .fun .hand { color: var(--fun-text); font-size: 1.15rem; margin-top: auto; padding-top: 18px; }
 
     .plain { list-style: none; display: grid; gap: 10px; }
     .plain li span { display: block; font-size: 0.9rem; opacity: .8; }
@@ -310,7 +311,7 @@
     footer { background: var(--deep); color: var(--on-deep); padding: clamp(56px, 8vw, 96px) 0 32px; overflow: hidden; position: relative; transition: background-color .5s var(--ease); }
     footer .wrap { position: relative; z-index: 1; }
     footer h2 { font-size: clamp(2.8rem, 8vw, 5.5rem); color: var(--on-deep); margin-bottom: 12px; }
-    footer .hand { color: #FCB729; font-size: 1.8rem; }
+    footer .hand { color: #FCB729; font-size: clamp(1.2rem, 2vw, 1.45rem); }
     footer a { color: var(--on-deep); }
     .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 64px; }
     footer .btn { background: rgba(246, 230, 194, .14); color: var(--on-deep); }
@@ -346,7 +347,7 @@
        RESPONSIVE
        ============================================================ */
     @media (max-width: 960px) {
-      .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "bio bio" "certs pencil" "skills skills"; }
+      .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "bio certs" "skills skills" "fun fun"; }
     }
     @media (max-width: 860px) {
       .hero .wrap, .project, .timeline { grid-template-columns: 1fr; }
@@ -359,16 +360,19 @@
       .skill-groups { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      .bento { grid-template-columns: 1fr; grid-template-areas: "bio" "certs" "skills" "pencil"; }
+      .bento { grid-template-columns: 1fr; grid-template-areas: "bio" "certs" "skills" "fun"; }
       .btn { padding: 10px 16px; }
       .nav .btn { padding: 9px 14px; font-size: 0.875rem; }
       .icon-btn { width: 38px; height: 38px; }
-      .logo { font-size: 1.1rem; }
+      .logo { font-size: 1.1rem; gap: 8px; }
+      .logo-star { width: 36px; height: 36px; }
       .portrait { max-width: 320px; }
     }
-    @media (max-width: 370px) {
-      .logo { font-size: 1rem; gap: 8px; }
+    @media (max-width: 400px) {
+      .logo { font-size: 1rem; gap: 6px; }
+      .logo-star { width: 32px; height: 32px; }
       .nav-right { gap: 6px; }
+      .nav .btn { padding: 8px 12px; }
     }
   </style>
 </head>
@@ -378,7 +382,11 @@
   <!-- ===================== HEADER ===================== -->
   <header class="nav">
     <div class="wrap">
-      <a class="logo" href="#top"><span class="logo-sun" aria-hidden="true"></span>Avery Wright</a>
+      <a class="logo" href="#top">
+        <svg class="logo-star" viewBox="0 0 100 100" aria-hidden="true">
+          <polygon points="50,9 61.6,34 88,38.3 68.6,56.6 73.3,83 50,70.3 26.7,83 31.4,56.6 12,38.3 38.4,34" fill="#FCB729" stroke="#FCB729" stroke-width="14" stroke-linejoin="round"/>
+          <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="29" letter-spacing="-1.5" fill="#3B2617">AW</text>
+        </svg>Avery Wright</a>
       <nav aria-label="Main">
         <ul>
           <li><a href="#work">Work</a></li>
@@ -409,14 +417,13 @@
           <h1 data-reveal>Avery<br><span class="last">Wright.</span></h1>
           <p class="hand quote" data-reveal style="--d:.12s">“I enjoy the behind the scenes work and crafting designs that make a real impact.”</p>
           <ul class="facts" data-reveal style="--d:.2s">
-            <li><b>UI/UX Designer</b><span>open to full-time roles</span></li>
+            <li><b>User Interface and Research Designer</b><span>open to full-time roles</span></li>
             <li><b>B.S. Interactive Design</b><span>Kennesaw State University, 2026</span></li>
             <li><b>Based in</b><span>Kennesaw, GA</span></li>
           </ul>
           <div class="quick-links" data-reveal style="--d:.28s">
             <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
-            <!-- Replace with your LinkedIn profile URL -->
-            <a class="btn" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/avery-wright-5a2067278" target="_blank" rel="noopener">LinkedIn ↗</a>
             <a class="btn" href="mailto:averywrightdesigner@gmail.com">Email ↗</a>
           </div>
         </div>
@@ -459,7 +466,7 @@
               <h3>Project title</h3>
               <p class="blurb">One or two sentences: the problem, what you designed, and what changed. Lead with a result if you have one, like "testers finished sign-up 2x faster."</p>
               <dl class="meta">
-                <div><dt>Role</dt><dd>UI/UX Designer</dd></div>
+                <div><dt>Role</dt><dd>UI and Research Designer</dd></div>
                 <div><dt>Team</dt><dd>Solo</dd></div>
                 <div><dt>Timeline</dt><dd>8 weeks</dd></div>
               </dl>
@@ -519,7 +526,7 @@
 
         <div class="bento">
           <div class="tile bio" data-reveal>
-            <p>I'm Avery, a UI/UX designer from Kennesaw, Georgia. I graduated from Kennesaw State University in 2026 with a B.S. in Interactive Design.</p>
+            <p>I'm Avery, a user interface and research designer from Kennesaw, Georgia. I graduated from Kennesaw State University in 2026 with a B.S. in Interactive Design.</p>
             <p>My favorite part of design is the work most people never see: talking to users, sorting through research, mapping out flows, and testing prototypes until they make sense to the people who will use them.</p>
             <p>Before design, I spent over five years working in coffee shops and restaurants. Running a busy Starbucks bar and serving tables taught me how to figure out what people need, and how to stay calm when things get hectic. I use both of those skills every day as a designer.</p>
             <p>I'm looking for a full-time role where I can keep learning from a great team and design things that help people.</p>
@@ -551,11 +558,12 @@
             </div>
           </div>
 
-          <div class="tile pencil" data-reveal style="--d:.1s">
+          <div class="tile fun" data-reveal style="--d:.1s">
             <h3>Off the clock</h3>
-            <p>When I'm not designing, I'm drawing. I do photorealistic pencil illustrations, and a single piece can take me hours of slow, careful shading.</p>
-            <!-- Add a photo of one of your drawings here: <img src="images/drawing.jpg" alt="..."> -->
-            <p class="hand">ask to see my sketchbook!</p>
+            <p>You'll usually find me at my local climbing gym. I started rock climbing a few years ago and was hooked right away. The community is fun and supportive, and I've made so many great friends there. Every route is a problem to solve, and climbing keeps me focused on both my mental and physical health.</p>
+            <p>I'm also on a mission to find the best latte around. My current favorite is the Crypt Keeper Latte at Mr. Tombstone's Coffee Emporium in Kennesaw. If you're ever in the area, you have to try it!</p>
+            <p>Otherwise, I'm reading graphic novels or wandering around an art convention.</p>
+            <p class="hand">Know a coffee shop I should try? Tell me!</p>
           </div>
         </div>
       </div>
@@ -572,7 +580,7 @@
               <li class="entry">
                 <div class="top"><span class="org">Pure Taqueria</span><span class="when">Mar 2025 - Present</span></div>
                 <div class="role">Server, Woodstock GA</div>
-                <p>I serve guests in a busy, high-volume restaurant. I work closely with the kitchen and front-of-house team to keep service running smoothly, and I look for small ways to make each visit better.</p>
+                <p>I serve guests in a busy, high-volume restaurant. I work with the front-of-house team, including bartenders and food runners, to keep service running smoothly, and I make sure every guest feels like a VIP.</p>
               </li>
               <li class="entry">
                 <div class="top"><span class="org">Starbucks</span><span class="when">Sep 2020 - Mar 2024</span></div>
@@ -618,7 +626,7 @@
       <p class="hand" data-reveal style="--d:.1s">Thanks for stopping by. Say hello anytime!</p>
       <div class="contact-links" data-reveal style="--d:.18s">
         <a class="btn primary" href="mailto:averywrightdesigner@gmail.com">averywrightdesigner@gmail.com</a>
-        <a class="btn" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/avery-wright-5a2067278" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
       </div>
       <div class="foot-bottom">
