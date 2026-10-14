@@ -17,10 +17,10 @@
     })();
   </script>
 
-  <!-- Fonts: Bricolage Grotesque (headings), Atkinson Hyperlegible (body), Gelasio (serif accent notes) -->
+  <!-- Fonts: Bricolage Grotesque (headings), Atkinson Hyperlegible (body), Mali (rounded handwritten notes) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Gelasio:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================
@@ -84,7 +84,7 @@
     :root {
       --f-head: "Bricolage Grotesque", system-ui, sans-serif;
       --f-body: "Atkinson Hyperlegible", system-ui, sans-serif;
-      --f-hand: "Gelasio", Georgia, serif;
+      --f-hand: "Mali", "Comic Sans MS", system-ui, sans-serif;
       --wrap: 1160px;
       --gutter: clamp(16px, 4vw, 40px);
       --r-lg: 28px;
@@ -112,7 +112,7 @@
     .skip:focus { left: 16px; top: 16px; background: var(--surface); padding: 8px 12px; z-index: 99; }
 
     h1, h2, h3 { font-family: var(--f-head); line-height: 1.02; letter-spacing: -0.025em; font-weight: 800; }
-    .hand { font-family: var(--f-hand); font-style: italic; font-weight: 500; color: var(--hand); line-height: 1.35; letter-spacing: -0.005em; }
+    .hand { font-family: var(--f-hand); font-weight: 600; color: var(--hand); line-height: 1.4; }
 
     /* Buttons: solid fills, no outlines */
     .btn {
@@ -186,7 +186,7 @@
     .hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(36px, 6vw, 88px); align-items: center; }
     .hero h1 { font-size: clamp(3.6rem, 10.5vw, 8rem); }
     .hero h1 .last { color: var(--headline); transition: color .5s var(--ease); }
-    .hero .quote { font-size: clamp(1.25rem, 2.1vw, 1.6rem); margin: 22px 0 28px; max-width: 30ch; }
+    .hero .quote { font-size: clamp(1.15rem, 1.9vw, 1.45rem); margin: 22px 0 28px; max-width: 32ch; }
     .facts { list-style: none; display: grid; gap: 8px; margin-bottom: 30px; }
     .facts li { display: flex; flex-wrap: wrap; column-gap: 10px; align-items: baseline; }
     .facts b { font-family: var(--f-head); font-weight: 700; white-space: nowrap; }
@@ -206,7 +206,7 @@
       background: var(--surface-2);
     }
     .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
-    .portrait figcaption { font-family: var(--f-hand); font-style: italic; font-size: 1.05rem; color: var(--text-2); padding: 12px 6px 0; text-align: center; }
+    .portrait figcaption { font-family: var(--f-hand); font-weight: 500; font-size: 1rem; color: var(--text-2); padding: 12px 6px 0; text-align: center; }
 
     /* ============================================================
        SKILLS TICKER
@@ -222,7 +222,7 @@
     section { padding: clamp(56px, 8vw, 112px) 0; }
     .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: clamp(28px, 4vw, 44px); flex-wrap: wrap; }
     .sec-head h2 { font-size: clamp(2.4rem, 6vw, 4rem); }
-    .sec-head .hand { font-size: 1.2rem; }
+    .sec-head .hand { font-size: 1.1rem; }
 
     /* ---------- Projects ---------- */
     .projects { display: grid; gap: clamp(20px, 3vw, 32px); }
@@ -268,7 +268,7 @@
     .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .project .btn:not(.primary) { background: var(--chip); }
     .project .btn:not(.primary):hover { background: var(--bg); }
-    .soon { font-family: var(--f-hand); font-style: italic; font-size: 1.1rem; color: var(--hand); }
+    .soon { font-family: var(--f-hand); font-weight: 600; font-size: 1.05rem; color: var(--hand); }
 
     /* ---------- About ---------- */
     .bento {
@@ -286,7 +286,7 @@
     .certs  { grid-area: certs; background: var(--surface-2); }
     .skills { grid-area: skills; background: var(--surface-3); }
     .fun { grid-area: fun; background: var(--fun-bg); color: var(--fun-text); display: flex; flex-direction: column; }
-    .fun .hand { color: var(--fun-text); font-size: 1.15rem; margin-top: auto; padding-top: 18px; }
+    .fun .hand { color: var(--fun-text); font-size: 1.05rem; margin-top: auto; padding-top: 18px; }
 
     .plain { list-style: none; display: grid; gap: 10px; }
     .plain li span { display: block; font-size: 0.9rem; opacity: .8; }
@@ -313,7 +313,7 @@
     footer { background: var(--deep); color: var(--on-deep); padding: clamp(56px, 8vw, 96px) 0 32px; overflow: hidden; position: relative; transition: background-color .5s var(--ease); }
     footer .wrap { position: relative; z-index: 1; }
     footer h2 { font-size: clamp(2.8rem, 8vw, 5.5rem); color: var(--on-deep); margin-bottom: 12px; }
-    footer .hand { color: #FCB729; font-size: clamp(1.2rem, 2vw, 1.45rem); }
+    footer .hand { color: #FCB729; font-size: clamp(1.1rem, 1.8vw, 1.3rem); }
     footer a { color: var(--on-deep); }
     .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 64px; }
     footer .btn { background: rgba(246, 230, 194, .14); color: var(--on-deep); }
