@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blueprint | Avery Wright</title>
+  <meta name="description" content="Blueprint case study: a personal style and fashion education app. Avery Wright, team member, Interaction Design II.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Set day/night before the page paints, so there's no flash -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      document.documentElement.classList.add("js");
+    })();
+  </script>
+
+  <!-- Fonts: Bricolage Grotesque (headings), Atkinson Hyperlegible (body), Mali (rounded handwritten notes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="index.html">
+        <svg class="logo-fern" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M48 96 Q44 52 58 5" fill="none" stroke="#5E5C24" stroke-width="3.5" stroke-linecap="round"/>
+          <g fill="#8A8635">
+            <ellipse cx="63.4" cy="71.7" rx="17.7" ry="4.8" transform="rotate(-32 63.4 71.7)"/>
+            <ellipse cx="30.9" cy="71.7" rx="17.7" ry="4.8" transform="rotate(212 30.9 71.7)"/>
+            <ellipse cx="62.0" cy="62.6" rx="16.0" ry="4.3" transform="rotate(-32 62.0 62.6)"/>
+            <ellipse cx="32.3" cy="62.6" rx="16.0" ry="4.3" transform="rotate(212 32.3 62.6)"/>
+            <ellipse cx="61.0" cy="53.5" rx="14.4" ry="3.9" transform="rotate(-32 61.0 53.5)"/>
+            <ellipse cx="34.1" cy="53.5" rx="14.4" ry="3.9" transform="rotate(212 34.1 53.5)"/>
+            <ellipse cx="60.5" cy="44.3" rx="12.7" ry="3.4" transform="rotate(-32 60.5 44.3)"/>
+            <ellipse cx="36.4" cy="44.3" rx="12.7" ry="3.4" transform="rotate(212 36.4 44.3)"/>
+            <ellipse cx="60.3" cy="35.0" rx="10.9" ry="2.9" transform="rotate(-32 60.3 35.0)"/>
+            <ellipse cx="39.2" cy="35.0" rx="10.9" ry="2.9" transform="rotate(212 39.2 35.0)"/>
+            <ellipse cx="60.5" cy="25.7" rx="9.1" ry="2.5" transform="rotate(-32 60.5 25.7)"/>
+            <ellipse cx="42.5" cy="25.7" rx="9.1" ry="2.5" transform="rotate(212 42.5 25.7)"/>
+            <ellipse cx="61.2" cy="16.4" rx="7.3" ry="2.2" transform="rotate(-32 61.2 16.4)"/>
+            <ellipse cx="46.3" cy="16.4" rx="7.3" ry="2.2" transform="rotate(212 46.3 16.4)"/>
+            <ellipse cx="57.2" cy="7.8" rx="2.6" ry="5.5" transform="rotate(15 57.2 7.8)"/>
+          </g>
+        </svg>Avery Wright</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <button class="icon-btn" id="musicBtn" aria-pressed="false" aria-label="Play music" title="Play music">
+          <svg class="i-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+        <button class="icon-btn" id="themeBtn" aria-label="Switch to night mode" title="Switch to night mode">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero" aria-labelledby="cs-title">
+      <div class="wrap">
+        <a class="back" href="index.html#work">← All work</a>
+        <div class="tags" data-reveal><span class="tag">UI Design</span><span class="tag">UX Research</span><span class="tag">Branding</span></div>
+        <h1 id="cs-title" data-reveal>Blueprint</h1>
+        <p class="cs-lede" data-reveal style="--d:.08s">A personal style and fashion education app that helps people discover and define their unique style.</p>
+        <!-- Cover image: replace the mock with <img src="images/blueprint-cover.jpg" alt="..."> -->
+        <div class="cs-cover t-2" data-reveal style="--d:.12s"><div class="mock desk" aria-hidden="true"><i class="h"></i><i></i><div class="row"><i></i><i></i><i></i></div><i class="btnbar"></i></div></div>
+        <dl class="cs-facts" data-reveal style="--d:.1s">
+          <div><dt>Client</dt><dd>Interaction Design II</dd></div>
+          <div><dt>Timeline</dt><dd>4 months, 2026</dd></div>
+          <div><dt>My role</dt><dd>Team member</dd></div>
+          <div><dt>Tools</dt><dd>Teams, Figma, FigJam, Pinterest</dd></div>
+          <div class="team"><dt>Team</dt><dd><ul><li><b>Tolina Yussuf</b>, Project Manager</li><li>Trenton Gwyn</li><li>Dylan DeWick</li><li>Kalvin McCloskey</li><li><b>Avery Wright</b></li></ul></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="cs-body">
+      <div class="wrap">
+        <section class="cs-sec" data-reveal>
+          <h2>The problem</h2>
+          <div>
+            <p class="big">How many of you wake up and realize none of your clothes are speaking to you, or catch yourself overthinking an outfit until you get frustrated and just settle?</p>
+            <p>Clothing is deeply tied to our personalities and moods, which makes our clothes a direct expression of who we are as individuals. Still, many people find themselves in an endless spiral of chasing trends that are gone by the next week, swinging between feeling like fashion can be whatever you make of it and complete inspiration burnout.</p>
+            <p>A lot of people struggle to find their personal style and keep a curated closet of clothes they actually want to wear.</p>
+          </div>
+        </section>
+
+        <section class="cs-sec" data-reveal>
+          <h2>Our goal</h2>
+          <div>
+            <p class="big">Make fashion a more accessible and fun part of life to explore.</p>
+            <p>Blueprint is a personal style and fashion education resource designed to help you discover and define your unique style.</p>
+          </div>
+        </section>
+
+        <section class="cs-sec" data-reveal>
+          <h2>The opportunity</h2>
+          <div>
+            <p>Existing products and fashion services don't give users a way to curate their own style or the creative freedom that comes with it, and they rarely offer essential fashion education.</p>
+            <p>Blueprint fills that gap with a gamified approach to fashion education and a space where users can save their fashion ideas in mood boards.</p>
+            <ul class="chips"><li>Mood boards</li><li>Learning modules</li><li>Achievements</li><li>Fashion genre discovery</li></ul>
+          </div>
+        </section>
+
+        <section class="cs-sec" data-reveal>
+          <h2>My role</h2>
+          <div>
+            <p>As a team member, I worked directly with our Project Manager, Tolina, to build her app idea from the ground up.</p>
+            <div class="contrib">
+              <div><h3>Research and strategy</h3><p>I helped build our lean UX canvas, including our problem statement, goals, and personas, and took part in weekly design sprints.</p></div>
+              <div><h3>Testing and interviews</h3><p>I joined team meetings, ran usability tests, and hosted a user interview.</p></div>
+              <div><h3>Wireframes</h3><p>I sketched our low-fidelity wireframe on a whiteboard using the features we agreed on. It became the foundation for our first designs in Figma.</p></div>
+              <div><h3>The Learn page</h3><p>I designed the Learn page in Figma and refined it based on feedback and our usability test results.</p></div>
+              <div class="wide"><h3>Branding</h3><p>I'm passionate about branding and illustration, so I designed the app's logo and the thumbnail for our Figma file.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="cs-sec" data-reveal>
+          <h2>What I learned</h2>
+          <div>
+            <p>Working on Blueprint taught me a lot about myself, my work style, and how to handle conflicts or miscommunication when they come up.</p>
+            <p>The semester was a rollercoaster. I normally use a calendar to keep track of due dates, but I didn't start one until two months into the project.</p>
+            <div class="lesson"><p class="hand">Next time: plan ahead and assign tasks early, instead of just getting them done on time.</p></div>
+          </div>
+        </section>
+
+        <section class="cs-sec" data-reveal>
+          <h2>The outcome</h2>
+          <div>
+            <p class="big">Blueprint helps people move beyond trend-chasing and toward discovering a personal style.</p>
+            <p>Through collaboration, iterative design, and feedback, our team turned a common frustration with fashion into a fun way to learn about it. Contributing to Blueprint helped me grow as both a designer and a teammate. It strengthened my UX process skills and showed me how important planning, communication, and adaptability are when working with a team.</p>
+          </div>
+        </section>
+
+        <a class="next-proj" href="nessie.html" data-reveal>
+          <span><small>next project</small><strong>Nessie</strong></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <footer id="contact">
+    <div class="foot-sun" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2 data-reveal>Let's talk.</h2>
+      <p class="hand" data-reveal style="--d:.1s">Thanks for stopping by. Say hello anytime!</p>
+      <div class="contact-links" data-reveal style="--d:.18s">
+        <a class="btn primary" href="mailto:averywrightdesigner@gmail.com">averywrightdesigner@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/avery-wright-5a2067278" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year">2026</span> Avery Wright. Designed and built by me.</span>
+        <a href="#main">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
