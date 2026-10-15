@@ -480,12 +480,12 @@ footer .btn.primary:hover { background: #BCD59F; }
    SNAIL SCROLL PROGRESS, SQUIGGLES, OPEN TO WORK BADGE
    ============================================================ */
 .progress { position: absolute; left: 0; right: 0; bottom: -2px; height: 3px; pointer-events: none; }
-.progress .bar { height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); }
-.progress img { position: absolute; bottom: -1px; left: calc(var(--p, 0) * (100% - 34px)); height: 20px; transform: scaleX(-1); }
+.progress .bar { height: 100%; background: var(--accent); width: calc(var(--p, 0) * (100% - 32px) + 4px); }
+.progress img { position: absolute; bottom: -1px; left: calc(var(--p, 0) * (100% - 32px)); width: 32px; height: auto; transform: scaleX(-1); }
 
 .sec-head h2 { position: relative; }
-.squig { position: absolute; left: 0; bottom: -14px; width: min(100%, 240px); height: 14px; overflow: visible; }
-.squig path { fill: none; stroke: var(--orb); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 260; stroke-dashoffset: 260; transition: stroke-dashoffset 1.1s var(--ease) .25s; }
+.squig { position: absolute; left: 0; right: 0; bottom: -14px; width: 100%; height: 14px; overflow: visible; }
+.squig path { fill: none; stroke: var(--orb); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s var(--ease) .25s; }
 .in .squig path, .no-io .squig path { stroke-dashoffset: 0; }
 
 .badge { position: absolute; z-index: 2; left: -7%; bottom: 12%; width: 120px; height: 120px; border-radius: 50%;

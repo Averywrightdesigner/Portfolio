@@ -199,6 +199,6 @@ function lofiMusic() {
 
 /* ---------- Squiggles under section titles ---------- */
 document.querySelectorAll(".sec-head h2").forEach((h) => {
-  h.insertAdjacentHTML("beforeend", '<svg class="squig" viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 22 1, 38 13, 58 7 S 96 1, 116 7 S 154 13, 174 7 S 212 1, 238 6"/></svg>');
+  h.insertAdjacentHTML("beforeend", '<svg class="squig" viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 8 C 22 1, 38 13, 58 7 S 96 1, 116 7 S 154 13, 174 7 S 212 1, 238 6"/></svg>');
 });
 if (!("IntersectionObserver" in window)) document.documentElement.classList.add("no-io");
