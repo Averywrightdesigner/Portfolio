@@ -179,3 +179,26 @@ function lofiMusic() {
     }
   };
 }
+
+/* ---------- Snail scroll progress ---------- */
+(function () {
+  const nav = document.querySelector(".nav");
+  if (!nav) return;
+  const prog = document.createElement("div");
+  prog.className = "progress"; prog.setAttribute("aria-hidden", "true");
+  prog.innerHTML = '<div class="bar"></div><img src="images/snail.png" alt="">';
+  nav.appendChild(prog);
+  function onScroll() {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.setProperty("--p", max > 0 ? Math.min(1, scrollY / max) : 0);
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll);
+  onScroll();
+})();
+
+/* ---------- Squiggles under section titles ---------- */
+document.querySelectorAll(".sec-head h2").forEach((h) => {
+  h.insertAdjacentHTML("beforeend", '<svg class="squig" viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 22 1, 38 13, 58 7 S 96 1, 116 7 S 154 13, 174 7 S 212 1, 238 6"/></svg>');
+});
+if (!("IntersectionObserver" in window)) document.documentElement.classList.add("no-io");
