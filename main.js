@@ -67,8 +67,8 @@ function setMusicBtn(on) {
   musicBtn.title = on ? "Pause music" : "Play music";
 }
 musicBtn.addEventListener("click", () => {
-  const on = musicBtn.getAttribute("aria-pressed") !== "true";
-  on ? player.play() : player.stop();
+  const on = !player.isOn();
+  if (on) player.play().catch(() => {}); else player.stop();
   setMusicBtn(on);
 });
 
@@ -78,12 +78,15 @@ function fileMusic(src) {
   a.preload = "none"; a.loop = true; a.src = src;
   const MAX = 0.4;
   let fade, on = false;
-  function fadeTo(target, done) {
+  // Time-based fade. It always finishes on schedule, even on iPhones and
+  // iPads, where websites can't change the volume at all.
+  function fadeTo(target, ms, done) {
     clearInterval(fade);
+    const from = a.volume, t0 = Date.now();
     fade = setInterval(() => {
-      const v = a.volume + (target > a.volume ? 0.02 : -0.02);
-      if (Math.abs(target - a.volume) <= 0.02) { a.volume = target; clearInterval(fade); if (done) done(); }
-      else a.volume = Math.min(1, Math.max(0, v));
+      const k = Math.min(1, (Date.now() - t0) / ms);
+      try { a.volume = from + (target - from) * k; } catch (e) {}
+      if (k >= 1) { clearInterval(fade); if (done) done(); }
     }, 40);
   }
   function save() {
@@ -95,12 +98,17 @@ function fileMusic(src) {
     play(fromTime) {
       on = true;
       if (fromTime) { a.preload = "auto"; try { a.currentTime = fromTime; } catch (e) {} }
-      a.volume = 0;
-      const p = a.play();
-      fadeTo(MAX); save();
-      return p || Promise.resolve();
+      try { a.volume = 0; } catch (e) {}
+      const p = a.play() || Promise.resolve();
+      fadeTo(MAX, 800); save();
+      return p.catch((err) => { on = false; clearInterval(fade); throw err; });
     },
-    stop() { on = false; save(); fadeTo(0, () => a.pause()); },
+    stop() {
+      on = false; save();
+      fadeTo(0, 350, () => a.pause());
+      setTimeout(() => { if (!on) a.pause(); }, 450);   // safety net: always pauses
+    },
+    isOn() { return on; },
     seek(t) { const go = () => { try { a.currentTime = t; } catch (e) {} }; a.readyState ? go() : a.addEventListener("loadedmetadata", go, { once: true }); }
   };
 }
@@ -114,7 +122,10 @@ function fileMusic(src) {
   player.seek(saved.t || 0);
   player.play().catch(() => {
     // The browser wants a tap or click first: resume on the next one
-    const go = () => { if (musicBtn.getAttribute("aria-pressed") === "true") player.play(); };
+    const go = (e) => {
+      if (e && e.target && e.target.closest && e.target.closest("#musicBtn")) return;   // let the button decide
+      if (musicBtn.getAttribute("aria-pressed") === "true" && !player.isOn()) player.play();
+    };
     addEventListener("pointerdown", go, { once: true, capture: true });
     addEventListener("keydown", go, { once: true, capture: true });
   });
