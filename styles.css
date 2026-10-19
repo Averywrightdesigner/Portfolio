@@ -500,3 +500,41 @@ footer .btn.primary:hover { background: #BCD59F; }
   .badge svg { animation: none; }
   .squig path { transition: none; stroke-dashoffset: 0; }
 }
+
+/* ---------- Nessie expansion ---------- */
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.toc a { font-size: .9rem; font-weight: 700; text-decoration: none; color: var(--text); padding: 6px 14px; border-radius: 999px; background: var(--surface); }
+.toc a:hover { background: var(--orb); color: var(--fun-text); }
+.cs-sec h3.sub { font: 700 1.15rem var(--f-head); margin: 30px 0 12px; letter-spacing: -.01em; }
+.pull { margin: 22px 0 4px; padding: 18px 22px; border-radius: var(--r-md); background: var(--tint-1); font-family: var(--f-hand); font-weight: 600; font-size: 1.1rem; line-height: 1.5; color: var(--text); }
+.goals { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.goals li { background: var(--surface); border-radius: var(--r-md); padding: 18px 20px; }
+.goals b { display: block; font: 800 clamp(1.8rem, 3.4vw, 2.4rem)/1 var(--f-head); color: var(--headline); margin-bottom: 8px; letter-spacing: -.02em; }
+.goals span { color: var(--text-2); font-size: .95rem; }
+.agree { list-style: none; display: grid; gap: 8px; }
+.agree li { position: relative; padding: 12px 16px 12px 42px; background: var(--surface-3); border-radius: var(--r-md); }
+.agree li::before { content: ""; position: absolute; left: 16px; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--orb); }
+.path { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; counter-reset: p; }
+.path li { counter-increment: p; position: relative; background: var(--surface); border-radius: var(--r-md); padding: 18px 20px; }
+.path li::before { content: counter(p); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font: 800 .95rem var(--f-head); margin-bottom: 10px; }
+.path li:not(:last-child)::after { content: "→"; position: absolute; right: -12px; top: 22px; font-weight: 800; color: var(--headline); z-index: 1; }
+.path b { display: block; font-family: var(--f-head); margin-bottom: 4px; }
+.path span { color: var(--text-2); font-size: .95rem; }
+.team-grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+.team-grid li { background: var(--surface); border-radius: var(--r-md); padding: 16px 18px; }
+.team-grid li:first-child { background: var(--orb); color: var(--fun-text); }
+.team-grid li:first-child span { color: var(--fun-text); }
+.team-grid b { display: block; font-family: var(--f-head); }
+.team-grid span { color: var(--text-2); font-size: .92rem; }
+.ph { border: 2px dashed var(--surface-2); border-radius: var(--r-md); padding: 22px; display: grid; gap: 4px; color: var(--text-2); margin-top: 16px; }
+.ph b { color: var(--text); font-family: var(--f-head); }
+@media (max-width: 760px) {
+  .goals, .path, .team-grid { grid-template-columns: 1fr; }
+  .path li:not(:last-child)::after { content: "↓"; right: auto; left: 30px; top: auto; bottom: -16px; }
+}
+
+.toc { align-items: center; }
+.toc-label { font-size: .9rem; font-weight: 700; color: var(--text-2); margin-right: 4px; }
+.toc a { background: var(--accent); color: var(--on-accent); transition: transform .2s var(--ease), background-color .2s var(--ease); }
+.toc a:hover { background: var(--accent-hov); color: var(--on-accent); transform: translateY(-2px); }
+.agree { margin-top: 12px; }
