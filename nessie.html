@@ -73,8 +73,11 @@
           <div><dt>Timeline</dt><dd>4 months, 2026</dd></div>
           <div><dt>My role</dt><dd>Project Manager</dd></div>
           <div><dt>Tools</dt><dd>Figma, FigJam, Rive, Pinterest, Teams</dd></div>
-          <div class="team"><dt>Team</dt><dd><ul><li><b>Avery Wright</b>, Project Manager</li><li>Lilly Marus</li><li>Ava Flores</li><li>Allison Jones</li><li>Bella Plymale</li><li>Dylon Noon</li></ul></dd></div>
         </dl>
+        <nav class="toc" aria-label="Skip ahead">
+          <span class="toc-label">Skip ahead to</span>
+          <a href="#leading">Leadership ↓</a><a href="#research">Research ↓</a><a href="#design">Design ↓</a><a href="#testing">Testing ↓</a><a href="#outcome">Outcome ↓</a>
+        </nav>
       </div>
     </section>
 
@@ -88,49 +91,123 @@
           </div>
         </section>
 
-        <section class="cs-sec" data-reveal>
+        <section class="cs-sec" data-reveal id="leading">
           <h2>Leading the team</h2>
           <div>
-            <p>I pitched the idea and gathered a team of six talented people to help bring Nessie to life, then led the project as Project Manager.</p>
+            <p class="big">I pitched the idea and gathered a team of six to bring Nessie to life, then led the project as Project Manager.</p>
+            <div class="contrib">
+              <div><h3>Weekly check-ins</h3><p>I ran our weekly meetings and checked in with each teammate on their progress.</p></div>
+              <div><h3>Weekly goals</h3><p>I set the goals for each week and made sure everyone knew what was due and when.</p></div>
+              <div class="wide"><h3>Final edits</h3><p>Teammates reviewed each other's work, and I made the final edits before every submission.</p></div>
+            </div>
+
+            <h3 class="sub">Our team charter</h3>
+            <p>Our first document was a team equity charter that set our goals and how we'd work together.</p>
+            <ul class="goals">
+              <li><b>24 hrs</b><span>Every milestone finished a day early for team review</span></li>
+              <li><b>5+</b><span>User interviews in the first three weeks</span></li>
+              <li><b>1 / week</b><span>Team meeting at minimum, in person or on Teams</span></li>
+            </ul>
+            <ul class="agree">
+              <li>Replies within 24 hours, with Teams as our home base</li>
+              <li>Edits to someone's work proposed first, so every contribution was respected and tracked</li>
+              <li>We recognized each other's good work along the way</li>
+            </ul>
+
+            <h3 class="sub">The team</h3>
+            <ul class="team-grid">
+              <li><b>Avery Wright</b><span>Project Manager: goals, check-ins, and final edits</span></li>
+              <li><b>Allison Jones</b><span>Interviewing and research</span></li>
+              <li><b>Lilly Marus</b><span>UI/UX design</span></li>
+              <li><b>Dylon Noon</b><span>User research and Figma organization</span></li>
+              <li><b>Bella Plymale</b><span>Scheduling, documentation, and research</span></li>
+              <li><b>Ava Flores</b><span>Visual design and prototyping</span></li>
+            </ul>
           </div>
         </section>
 
-        <section class="cs-sec" data-reveal>
+        <section class="cs-sec" data-reveal id="research">
           <h2>Research</h2>
           <div>
-            <p>Every good project starts with research. Team Nessie completed:</p>
-            <ol class="steps">
-              <li>Problem identification</li>
-              <li>Competitive research against similar products on the market</li>
-              <li>A literature review</li>
-            </ol>
-            <div class="stat"><b>7</b><span>similar products analyzed in our competitive research</span></div>
-            <figure class="cs-fig device">
-              <div class="frame"><img src="images/nessie-figjam.webp" width="1600" height="989" loading="lazy" alt="Team Nessie's FigJam research board with interview notes, affinity mapping, and requirements"></div>
-              <figcaption>Our research board in FigJam</figcaption>
-            </figure>
+            <p>Every good project starts with research. Team Nessie started with problem identification, a literature review, competitive research, and user interviews.</p>
+            <div class="bn">
+              <figure class="s4 r3 img device">
+                <img src="images/nessie-figjam.webp" width="1600" height="989" loading="lazy" alt="Team Nessie's FigJam research board with interview notes, affinity mapping, and requirements">
+                <figcaption>Our research board in FigJam</figcaption>
+              </figure>
+              <div class="s2 lav"><b class="num">12</b><p>students and recent grads interviewed</p></div>
+              <div class="s2"><b class="num">7</b><p>similar products analyzed in our competitive research</p></div>
+              <div class="s2"><b class="num">10 min</b><p>a day: how long one recent grad said she'd want to spend in the app</p></div>
+            </div>
+
+            <h3 class="sub">What we heard</h3>
+            <div class="bn">
+              <div class="s3"><h4>Time is the biggest stressor</h4><p>Students talked more about time management than mental health. Most already tracked everything in Google Calendar or a planner.</p></div>
+              <div class="s3"><h4>Less screen time, not more</h4><p>Many wanted to spend less time on their phones, so the app had to be quick to use.</p></div>
+              <div class="s3"><h4>Privacy comes first</h4><p>People wanted anonymous usernames and to keep their full name, email, and location private.</p></div>
+              <div class="s3"><h4>Two kinds of users</h4><p>Some wanted quick, goal-focused check-ins. Others wanted longer reflection through journaling and community.</p></div>
+            </div>
+
+            <h3 class="sub">Meet Faye, our persona</h3>
+            <div class="bn">
+              <div class="s3 deep persona">
+                <span class="kicker">Persona</span>
+                <h4>Faye Pearl, 22</h4>
+                <p>Pre-med student taking four classes and working part-time as a server.</p>
+              </div>
+              <div class="s3"><h4>Her goals</h4><ul class="dots"><li>Relieve stress and stay on top of tasks</li><li>Connect with others going through the same thing</li><li>Have a safe, secure space</li></ul></div>
+              <div class="s6"><h4>Her day</h4><p>Faye keeps a checklist in her Notes app but forgets to check it. After a hard shift at work, she gets home at 1 a.m. and finds she missed an assignment because her reminder never reached her. She wishes she had someone to vent to, but she's too tired to journal.</p></div>
+            </div>
           </div>
         </section>
 
-        <section class="cs-sec" data-reveal>
-          <h2>The app</h2>
+        <section class="cs-sec" data-reveal id="design">
+          <h2>Design</h2>
           <div>
-            <p>Nessie gives students simple, private tools for checking in with themselves and finding support.</p>
-            <ul class="chips"><li>Mood calendar</li><li>Journaling</li><li>Breathing techniques</li><li>Community support</li></ul>
-            <figure class="cs-fig">
-              <div class="frame"><img src="images/nessie-onboarding.jpg" width="915" height="672" loading="lazy" alt="A phone on a desk showing Nessie's onboarding screen with the Nessie mascot and the text: Meet Nessie. There are tools to manage stress, stay organized, and feel supported."></div>
-              <figcaption>Meet Nessie, our onboarding screen and mascot</figcaption>
-            </figure>
+            <p class="big">We mapped five workflows around Faye's day, each one built to be simple on the surface but supportive in depth.</p>
+            <div class="bn flows">
+              <div class="s2"><span class="n">1</span><h4>Daily checklist</h4><p>Tasks sit right on the home screen. Checking one off fills the progress bar and keeps the streak going.</p></div>
+              <div class="s2"><span class="n">2</span><h4>Quick stress relief</h4><p>One button opens a guided breathing exercise, followed by a quick mood log.</p></div>
+              <div class="s2"><span class="n">3</span><h4>Community</h4><p>Read posts from others with similar experiences, and post anonymously only if you want to.</p></div>
+              <div class="s3"><span class="n">4</span><h4>End-of-day journal</h4><p>A summary of the day's wins, then a simple journal entry that doesn't feel like a chore.</p></div>
+              <div class="s3"><span class="n">5</span><h4>Gentle reminders</h4><p>Users choose their reminders, and tapping one takes them straight to the task.</p></div>
+              <div class="s3 lav"><h4>Privacy by design</h4><p>Face ID or a 4-digit PIN to log in, anonymous usernames, and short privacy summaries instead of long policies nobody reads.</p></div>
+              <figure class="s3 img cover">
+                <img src="images/nessie-onboarding.jpg" width="915" height="672" alt="A phone on a desk showing Nessie's onboarding screen with the Nessie mascot and the text: Meet Nessie. There are tools to manage stress, stay organized, and feel supported.">
+                <figcaption>Meet Nessie, our onboarding screen and mascot</figcaption>
+              </figure>
+            </div>
           </div>
         </section>
 
-        <section class="cs-sec" data-reveal>
-          <h2>Showcase</h2>
+        <section class="cs-sec" data-reveal id="testing">
+          <h2>Usability testing</h2>
+          <div>
+            <p>We tested the prototype with three participants ages 18 to 22, using the think-aloud method and the System Usability Scale.</p>
+            <div class="bn">
+              <div class="s2 lav"><b class="num">3</b><p>participants, from trade school to current college students</p></div>
+              <div class="s2"><b class="num">6</b><p>tasks: onboarding, home page, journal entry, profile icon, community post, and calendar</p></div>
+              <div class="s2"><b class="num">6 / 6</b><p>tasks completed by participants with little to no help</p></div>
+            </div>
+
+            <h3 class="sub">What we learned and changed</h3>
+            <div class="bn">
+              <div class="s3"><span class="kicker">We heard</span><h4>Users wanted more interaction</h4><p>Every participant clicked beyond what we had prototyped, trying to write journal entries and join communities.</p></div>
+              <div class="s3 change"><span class="kicker">We changed</span><h4>Working interactions</h4><p>We added real interactions to the sign in, journal, community, and profile pages, including text boxes that actually type.</p></div>
+              <div class="s3"><span class="kicker">We heard</span><h4>Users loved the points</h4><p>Streaks, the info page, and group content got more excitement than we expected.</p></div>
+              <div class="s3 change"><span class="kicker">We changed</span><h4>Game-style rewards</h4><p>We redesigned the streaks and achievements page to work more like a game's reward system.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="cs-sec" data-reveal id="outcome">
+          <h2>Outcome</h2>
           <div>
             <figure class="cs-fig" style="margin-top:0">
               <div class="frame"><img src="images/nessie-showcase.jpg" width="1600" height="1200" loading="lazy" alt="Avery and members of Team Nessie standing behind a table with the Nessie app on two monitors and a laptop showing the usability testing process page"></div>
               <figcaption>Team Nessie presenting the final app</figcaption>
             </figure>
+            <p style="margin-top:22px">Going in, my goal was to build a functional application and better understand the Goal-Directed Design process.</p>
           </div>
         </section>
 

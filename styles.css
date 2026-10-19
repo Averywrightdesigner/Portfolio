@@ -538,3 +538,43 @@ footer .btn.primary:hover { background: #DCD0F5; }
 .toc a { background: var(--accent); color: var(--on-accent); transition: transform .2s var(--ease), background-color .2s var(--ease); }
 .toc a:hover { background: var(--accent-hov); color: var(--on-accent); transform: translateY(-2px); }
 .agree { margin-top: 12px; }
+
+/* ---------- Case study bento tiles ---------- */
+.bn { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 20px; }
+.bn > * { margin: 0; background: var(--surface); border-radius: var(--r-md); padding: 18px 20px; transition: background-color .5s var(--ease); }
+.bn .s2 { grid-column: span 2; } .bn .s3 { grid-column: span 3; } .bn .s6 { grid-column: 1 / -1; }
+.bn h4 { font: 700 1.08rem/1.25 var(--f-head); letter-spacing: -.01em; margin-bottom: 6px; }
+.bn p { color: var(--text-2); font-size: .97rem; }
+.bn .num { display: block; font: 800 clamp(1.9rem, 3.4vw, 2.5rem)/1 var(--f-head); color: var(--headline); letter-spacing: -.02em; margin-bottom: 8px; }
+.bn .kicker { display: block; font: 600 .9rem var(--f-hand); color: var(--hand); margin-bottom: 4px; }
+.bn .lav { background: var(--orb); }
+.bn .lav, .bn .lav p, .bn .lav .num, .bn .lav .kicker { color: var(--fun-text); }
+.bn .deep { background: var(--deep); }
+.bn .deep, .bn .deep p, .bn .deep h4, .bn .deep .kicker { color: var(--on-deep); }
+.bn .change { background: var(--tint-1); }
+.bn .img { padding: 0; overflow: hidden; }
+.bn .img img { display: block; width: 100%; height: auto; }
+.bn .img.device { padding: clamp(16px, 3vw, 32px) clamp(16px, 3vw, 32px) 0; }
+.bn .img.device img { filter: drop-shadow(0 12px 16px rgba(0, 0, 0, .18)); }
+.bn figcaption { font: 600 .95rem var(--f-hand); color: var(--text-2); padding: 12px 20px 14px; }
+.bn .dots { list-style: none; display: grid; gap: 6px; color: var(--text-2); font-size: .97rem; }
+.bn .dots li { position: relative; padding-left: 20px; }
+.bn .dots li::before { content: ""; position: absolute; left: 0; top: .55em; width: 9px; height: 9px; border-radius: 50%; background: var(--orb); }
+.bn.flows .n { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--orb); color: var(--fun-text); font: 800 .95rem var(--f-head); margin-bottom: 10px; }
+@media (max-width: 760px) {
+  .bn { grid-template-columns: 1fr 1fr; }
+  .bn .s2 { grid-column: span 1; } .bn .s3 { grid-column: 1 / -1; }
+}
+@media (max-width: 440px) {
+  .bn .s2 { grid-column: 1 / -1; }
+}
+.bn .s4 { grid-column: span 4; } .bn .r3 { grid-row: span 3; }
+.bn .r3 + .s2, .bn .r3 ~ .s2 { grid-column: span 2; }
+.bn .img.device.r3 { display: flex; flex-direction: column; justify-content: center; }
+.bn .img.cover { display: flex; flex-direction: column; }
+.bn .img.cover img { flex: 1; min-height: 0; object-fit: cover; aspect-ratio: 4 / 3; }
+@media (max-width: 760px) {
+  .bn .s4, .bn .r3 { grid-column: 1 / -1; grid-row: auto; }
+  .bn .r3 ~ .s2 { grid-column: span 1; }
+}
+@media (max-width: 440px) { .bn .r3 ~ .s2 { grid-column: 1 / -1; } }
