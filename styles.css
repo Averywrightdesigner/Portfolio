@@ -618,3 +618,5 @@ a.tile-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3p
 .more-link { margin-top: 12px; }
 .more-link a { color: var(--accent-text); font-weight: 700; }
 :root[data-theme="dark"] .bn .deep { background: #3A4A80; }
+.pair-imgs.four { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 560px) { .pair-imgs.four { grid-template-columns: 1fr 1fr; } }
