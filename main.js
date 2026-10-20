@@ -205,3 +205,12 @@ initPage();
   });
   const _go = go; go = async (url, push) => { current = page(url); return _go(url, push); };
 })();
+
+// pause / play for the screen carousel (works after in-place page swaps too)
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".car-toggle");
+  if (!btn) return;
+  const paused = btn.closest(".carousel").classList.toggle("paused");
+  btn.setAttribute("aria-pressed", String(paused));
+  btn.textContent = paused ? "Play" : "Pause";
+});
