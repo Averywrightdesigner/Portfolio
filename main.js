@@ -161,7 +161,7 @@ initPage();
   let go = async function (url, push) {
     let html;
     try {
-      const res = await fetch(url.href, { credentials: "same-origin" });
+      const res = await fetch(url.href, { credentials: "same-origin", cache: "no-cache" });
       if (!res.ok) throw new Error(res.status);
       html = await res.text();
     } catch (e) { location.href = url.href; return; }
