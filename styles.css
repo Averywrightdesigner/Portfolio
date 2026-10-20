@@ -620,3 +620,18 @@ a.tile-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3p
 :root[data-theme="dark"] .bn .deep { background: #3A4A80; }
 .pair-imgs.four { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 560px) { .pair-imgs.four { grid-template-columns: 1fr 1fr; } }
+.heard-built .hb-head, .heard-built li { display: grid; grid-template-columns: 1fr 28px 1fr; gap: 12px; align-items: center; }
+.heard-built .hb-head { font: 600 .95rem var(--f-hand); color: var(--hand); margin-bottom: 6px; }
+.heard-built ul { list-style: none; display: grid; }
+.heard-built li { padding: 12px 0; box-shadow: 0 -1px 0 var(--surface-2); }
+.heard-built li p:first-child { color: var(--text); }
+.heard-built li span { color: var(--accent-text); font-weight: 700; text-align: center; }
+@media (max-width: 560px) {
+  .heard-built .hb-head { display: none; }
+  .heard-built li { grid-template-columns: 1fr; gap: 4px; }
+  .heard-built li span { text-align: left; }
+}
+@media (max-width: 560px) {
+  .heard-built li span { display: none; }
+  .heard-built li p:last-child::before { content: "→ "; color: var(--accent-text); font-weight: 700; }
+}
