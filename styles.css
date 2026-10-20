@@ -599,7 +599,7 @@ a.tile-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3p
 .car-track li { flex-shrink: 0; text-align: center; }
 .car-track img { display: block; height: clamp(300px, 34vw, 400px); width: auto; border-radius: 26px; box-shadow: 0 10px 22px rgba(31, 42, 77, .16); background: #fff; }
 .car-track span { display: block; margin-top: 10px; font: 600 .9rem var(--f-hand); color: var(--text-2); }
-.carousel.paused .car-track, .car-view:hover .car-track, .carousel:focus-within .car-track { animation-play-state: paused; }
+.carousel.paused .car-track { animation-play-state: paused; }
 .car-toggle { margin-top: 12px; }
 @keyframes car-scroll { to { transform: translateX(-100%); } }
 @media (prefers-reduced-motion: reduce) {
