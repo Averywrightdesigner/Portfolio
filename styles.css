@@ -635,3 +635,45 @@ a.tile-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3p
   .heard-built li span { display: none; }
   .heard-built li p:last-child::before { content: "→ "; color: var(--accent-text); font-weight: 700; }
 }
+
+/* ---------- Case study slides ---------- */
+.slides { padding: clamp(24px, 4vw, 48px) 0 clamp(56px, 8vw, 96px); }
+.slides .wrap { display: grid; gap: 20px; }
+.slide { background: var(--surface); border-radius: var(--r-lg); padding: clamp(24px, 5vw, 56px); scroll-margin-top: 90px; min-width: 0; transition: background-color .5s var(--ease); }
+.slide.tint { background: var(--tint-1); }
+.slide.open { background: var(--bg); box-shadow: inset 0 0 0 2px var(--surface); }
+.slide h2 { text-align: center; font-size: clamp(1.8rem, 3.4vw, 2.6rem); color: var(--headline); margin-bottom: 16px; letter-spacing: -.02em; }
+.slide .lead { text-align: center; max-width: 62ch; margin: 0 auto; font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.6; }
+.slide .sub { margin: 34px 0 0; font: 700 1.15rem var(--f-head); }
+.slide .bn > *:not(.lav):not(.deep):not(.change) { background: var(--bg); }
+.slide.open .bn > *:not(.lav):not(.deep):not(.change), .slide.open .car-view { background: var(--surface); }
+.slide .dots { list-style: none; display: grid; gap: 8px; margin-top: 14px; }
+.slide .dots li { position: relative; padding-left: 22px; }
+.slide .dots li::before { content: ""; position: absolute; left: 0; top: .55em; width: 10px; height: 10px; border-radius: 50%; background: var(--orb); }
+.split { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(20px, 4vw, 48px); align-items: center; }
+.split h2 { text-align: left; }
+.roles { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 22px; }
+.roles a { display: inline-block; padding: 9px 18px; border-radius: 999px; background: var(--tint-1); color: var(--text); font-weight: 700; text-decoration: none; transition: background-color .25s var(--ease); }
+.roles a:hover { background: var(--orb); color: var(--fun-text); }
+.stay { list-style: none; display: grid; gap: 12px; }
+.stay li { display: flex; align-items: baseline; gap: 14px; background: var(--bg); border-radius: var(--r-md); padding: 16px 20px; }
+.stay b { font: 800 1.7rem/1 var(--f-head); color: var(--headline); min-width: 3.4em; }
+.stay span { color: var(--text-2); }
+.pgoals { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 860px; margin: 0 auto; }
+.pgoals li { display: flex; gap: 16px; align-items: center; background: var(--orb); color: var(--fun-text); border-radius: var(--r-md); padding: 20px 22px; }
+.pgoals b { font: 800 2rem/1 var(--f-head); }
+.cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+.cs-col { border-radius: var(--r-md); padding: 22px 24px; }
+.cs-col.lav { background: var(--orb); color: var(--fun-text); }
+.cs-col.tint { background: var(--tint-1); }
+.cs-col h3 { font: 700 1.3rem var(--f-head); }
+.cs-col.lav .dots li::before { background: var(--fun-text); }
+.result-stat b { display: block; font: 800 clamp(3.4rem, 8vw, 5.5rem)/1 var(--f-head); color: var(--headline); letter-spacing: -.03em; }
+.result-stat p { font-size: 1.15rem; margin-top: 8px; max-width: 24ch; }
+.slide .carousel { margin-top: 24px; }
+@media (max-width: 760px) {
+  .split, .pgoals, .cs-grid { grid-template-columns: 1fr; }
+}
+.slides .wrap { grid-template-columns: minmax(0, 1fr); }
+.slide { display: block; } .slide.split { display: grid; }
+.bn .s2.img.art img { max-height: 170px; } @media (max-width: 440px) { .bn .s2.img.art { grid-column: span 1; } }
