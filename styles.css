@@ -677,3 +677,24 @@ a.tile-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3p
 .slides .wrap { grid-template-columns: minmax(0, 1fr); }
 .slide { display: block; } .slide.split { display: grid; }
 .bn .s2.img.art img { max-height: 170px; } @media (max-width: 440px) { .bn .s2.img.art { grid-column: span 1; } }
+.slide .prose { max-width: 70ch; margin: 0 auto; }
+.slide .prose p + p { margin-top: 14px; }
+.slide .split .prose { margin: 0; }
+.slide > .split { align-items: start; }
+.pstep { list-style: none; counter-reset: ps; display: grid; gap: 14px; max-width: 900px; margin: 0 auto; }
+.pstep > li { counter-increment: ps; position: relative; background: var(--surface); border-radius: var(--r-md); padding: 22px 24px 22px 72px; }
+.pstep > li::before { content: counter(ps, decimal-leading-zero); position: absolute; left: 22px; top: 20px; font: 800 1.3rem var(--f-head); color: var(--headline); }
+.pstep h3 { font: 700 1.2rem var(--f-head); margin-bottom: 6px; letter-spacing: -.01em; }
+.pstep p { color: var(--text-2); max-width: 68ch; }
+.pstep p + p { margin-top: 10px; }
+.pstep .heard-built { margin-top: 14px; background: var(--bg); border-radius: var(--r-md); padding: 14px 18px; }
+.pfig { margin: 14px 0 0; }
+.pfig img { display: block; width: 100%; height: auto; border-radius: 12px; background: #fff; }
+.pfig.tall img { max-height: 560px; width: auto; max-width: 100%; margin: 0 auto; }
+.pfig figcaption { font: 600 .9rem var(--f-hand); color: var(--text-2); margin-top: 8px; }
+.persona-split { grid-template-columns: 1.2fr 1fr; align-items: start; }
+.persona-split .pfig { margin: 0; }
+.mini-head { font-weight: 700; color: var(--text) !important; margin-top: 14px; }
+.vision { margin-top: 12px; padding: 16px 20px; border-left: 4px solid var(--orb); background: var(--bg); border-radius: 0 var(--r-md) var(--r-md) 0; font-style: italic; color: var(--text); }
+.result-split { grid-template-columns: 1.2fr 1fr; }
+@media (max-width: 560px) { .pstep > li { padding: 56px 18px 18px; } .pstep > li::before { left: 18px; top: 18px; } }

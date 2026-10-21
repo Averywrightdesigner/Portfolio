@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=1020c">
+  <link rel="stylesheet" href="styles.css?v=1021a">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -61,18 +61,14 @@
     <section class="cs-hero" aria-labelledby="cs-title">
       <div class="wrap">
         <a class="back" href="index.html#work">← All work</a>
-        <div class="tags" data-reveal><span class="tag">Mobile App</span><span class="tag">UX Research</span><span class="tag">Project Management</span></div>
+        <div class="tags" data-reveal><span class="tag">Mobile App</span><span class="tag">UX Research</span><span class="tag">Project Management</span><span class="tag">Prototyping</span></div>
         <h1 id="cs-title" data-reveal>Nessie</h1>
         <p class="cs-lede" data-reveal style="--d:.08s">A private, secure app that helps students take care of their mental health.</p>
         <div class="cs-actions" data-reveal style="--d:.1s"><a class="btn primary" href="https://www.figma.com/proto/eqawU6hHpJHPZ652iqBj4l/Nessie-Design-File?node-id=629-868&amp;p=f&amp;t=WWakb9CqW24Vn0Jy-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=1%3A4&amp;starting-point-node-id=629%3A868&amp;show-proto-sidebar=1" target="_blank" rel="noopener">View the prototype ↗</a></div>
-        <div class="cs-cover device" data-reveal style="--d:.12s">
-          <img src="images/nessie-screens.webp" width="1600" height="1013" alt="Three Nessie app screens: Explore a Group, the home screen with goals and a weekly calendar, and Journal Entries with mood tags">
-        </div>
         <dl class="cs-facts" data-reveal style="--d:.1s">
-          <div><dt>Client</dt><dd>Capstone26</dd></div>
-          <div><dt>Timeline</dt><dd>4 months, 2026</dd></div>
-          <div><dt>My role</dt><dd>Project Manager, prototyper, and illustrator</dd></div>
-          <div><dt>Tools</dt><dd>Figma, FigJam, Rive, Pinterest, Teams</dd></div>
+          <div><dt>Timeline</dt><dd>3 months, 2026</dd></div>
+          <div><dt>My role</dt><dd>Project Manager</dd></div>
+          <div><dt>Tools</dt><dd>Figma, FigJam, Rive, Google Docs, Teams</dd></div>
         </dl>
         <nav class="toc" aria-label="Skip ahead">
           <span class="toc-label">Skip ahead to</span>
@@ -86,143 +82,174 @@
 
         <section class="slide open" id="intro" data-reveal>
           <h2>Introduction</h2>
-          <p class="lead">Students deserve a safe online space for regulating their mental health that is both secure and private. The tools that already existed were either too complex or locked behind paywalls.</p>
-          <ul class="roles">
-            <li><a href="#role">Project Manager</a></li>
-            <li><a href="#process">User interviewer</a></li>
-            <li><a href="#design">Prototyper</a></li>
-            <li><a href="#illustration">Illustrator</a></li>
-          </ul>
+          <div class="prose">
+            <p>The mental health app space has mainly focused on crisis intervention, clinical therapy models, and broad audiences, often prioritizing diagnosis, tracking, or professional treatment over everyday emotional support for students. What existing products and services fail to address is the need for private, low-pressure support that students can access outside of traditional counseling, especially for stress, isolation, and day-to-day emotional challenges.</p>
+            <p>Nessie addresses this gap as a privacy-first mental health app that supports students through gentle guidance, emotional check-ins, and secure interactions, without pressure or judgment. Our focus is college students who deal with stress, feelings of isolation, or hesitation toward traditional mental health resources, especially those looking for support that fits into their daily routines. If Nessie were on the market, success would look like repeat use of its support features, more comfort expressing feelings privately, and feedback showing reduced stress or improved well-being.</p>
+          </div>
         </section>
 
-        <section class="slide tint split" id="role" data-reveal>
-          <div>
-            <h2>My role</h2>
-            <p>I pitched the idea for Nessie, built a team of six to make it, and led the project as Project Manager.</p>
-            <ul class="dots">
-              <li>Set the goals for each week and checked in on every teammate's progress</li>
-              <li>Made the final edits before every submission, after teammates reviewed each other's work</li>
+        <section class="slide tint" id="role" data-reveal>
+          <h2>My role</h2>
+          <div class="split">
+            <div class="prose">
+              <p>I pitched the idea for Nessie to a class of 90 students, built a team of six capable designers, and led the project as Project Manager. To keep the 3-month project running smoothly, I set weekly goals in Teams and checked in on each teammate's progress.</p>
+              <p>Before we submitted any work, we reviewed each other's writing, made sure we all agreed, and then made final edits for grammar and a consistent style across our documents. We also wrote a team equity charter that stated our measurable goals, each member's strengths, and rules for handling conflict.</p>
+            </div>
+            <ul class="stay">
+              <li><b>2x</b><span>a week in class on Mondays and Wednesdays, working together on documents and prototypes</span></li>
+              <li><b>1 hr</b><span>meeting I scheduled outside of class each week to talk through progress and concerns, since we all work and go to school full time</span></li>
+              <li><b>Teams</b><span>group chat to keep communication going between meetings</span></li>
             </ul>
           </div>
-          <ul class="stay">
-            <li><b>2x</b><span>a week in class together, Mondays and Wednesdays</span></li>
-            <li><b>1 hr</b><span>team meeting every week</span></li>
-            <li><b>Teams</b><span>group chat for everything in between</span></li>
-          </ul>
         </section>
 
         <section class="slide" id="goals" data-reveal>
           <h2>Project goals</h2>
           <ol class="pgoals">
-            <li><b>01</b><p>Create a private, secure space where students can check in on their mental health.</p></li>
-            <li><b>02</b><p>Keep it simple and free to use, unlike the tools already out there.</p></li>
+            <li><b>01</b><p>Create a private, secure space that's free and easy to use, where students can check in on their mental health.</p></li>
+            <li><b>02</b><p>Collaborate as a team on user research and prototyping, create a strong and versatile portfolio piece, and develop my leadership skills.</p></li>
           </ol>
         </section>
 
-        <section class="slide" id="process" data-reveal>
+        <section class="slide open" id="process" data-reveal>
           <h2>Process</h2>
-          <div class="bn">
-            <div class="s2"><span class="kicker">Research</span><h4>7 interviews, 7 products</h4><p>Our team ran a literature review, studied 7 similar apps, and interviewed 7 students and recent grads. Most cared about saving time and keeping their information private.</p></div>
-            <div class="s2 lav"><span class="kicker">My interview</span><h4>Habits, design, and privacy</h4><p>I interviewed a college student about how she copes with stress and what would make her trust an app. Her answers shaped four of my screens.</p></div>
-            <div class="s2"><span class="kicker">Persona</span><h4>Meet Faye</h4><p>We combined the interviews into Faye, a 22-year-old pre-med student who works part-time and forgets to check her to-do list.</p></div>
-            <div class="s6 heard-built">
-              <div class="hb-head" aria-hidden="true"><span>What she told me</span><span></span><span>What I designed</span></div>
-              <ul>
-                <li><p>Deep breaths got her through her last overwhelming moment at work.</p><span aria-hidden="true">→</span><p>A guided breathing exercise, plus a screen explaining why it works</p></li>
-                <li><p>Habits like journaling fall off when she's tired.</p><span aria-hidden="true">→</span><p>Streaks and rewards that take seconds a day</p></li>
-                <li><p>She wants an app to feel safe and secure.</p><span aria-hidden="true">→</span><p>Login with Face ID or a 4-digit PIN</p></li>
-                <li><p>Seeing a profile for the person she's talking to builds trust.</p><span aria-hidden="true">→</span><p>Nine Nessie profile icons, so no one has to share a photo</p></li>
-              </ul>
-            </div>
-          </div>
+          <ol class="pstep">
+            <li>
+              <h3>Setting up the team</h3>
+              <p>I started by creating our team in Microsoft Teams, where we shared files, chatted, and planned virtual meetings. I posted announcements and reminders there, and we used its calendar to track due dates and progress. I also led our FigJam file, where we began with a problem statement to keep us grounded in what we were trying to solve.</p>
+            </li>
+            <li>
+              <h3>Competitive analysis</h3>
+              <p>We compared 7 products in the mental health space, including BetterHelp, Headspace, and Finch, and listed the pros and cons of each.</p>
+              <figure class="pfig"><a href="images/nessie/competitive.webp" target="_blank" rel="noopener"><img src="images/nessie/competitive.webp" width="1800" height="900" loading="lazy" alt="Competitive analysis table comparing the pros and cons of BetterHelp, Headspace, 7 Cups, MoodTools, Finch, Schmoody, and Worry Watch"></a><figcaption>Our competitive analysis (tap to open full size)</figcaption></figure>
+            </li>
+            <li>
+              <h3>User interviews</h3>
+              <p>Next, we interviewed 7 potential users, college students and recent grads, to understand their behaviors, attitudes, aptitudes, motivations, environments, tools, and challenges. I interviewed one of them, and her answers shaped several of Nessie's features.</p>
+              <div class="heard-built">
+                <div class="hb-head" aria-hidden="true"><span>What she told me</span><span></span><span>What I designed</span></div>
+                <ul>
+                  <li><p>Deep breaths got her through her last overwhelming moment at work.</p><span aria-hidden="true">→</span><p>A guided breathing exercise, plus a screen explaining how it works and why it helps</p></li>
+                  <li><p>Habits like journaling fall off when she's tired.</p><span aria-hidden="true">→</span><p>Streaks and rewards that take seconds a day</p></li>
+                  <li><p>She wants an app to feel safe and secure.</p><span aria-hidden="true">→</span><p>Login with Face ID or a 4-digit PIN</p></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <h3>Affinity map</h3>
+              <p>We grouped what we learned into habits and behaviors, pain points, demographics, needs and wants, and tools.</p>
+              <figure class="pfig tall"><a href="images/nessie/affinity.webp" target="_blank" rel="noopener"><img src="images/nessie/affinity.webp" width="1491" height="1391" loading="lazy" alt="Affinity map in FigJam with sticky notes grouped under habits and behaviors, pain points, demographics, needs and wants, and tools"></a><figcaption>Our affinity map (tap to open full size)</figcaption></figure>
+            </li>
+            <li>
+              <h3>Domain research</h3>
+              <p>I then researched the product domain, including current opinions in blogs and articles, user reviews of similar products, and anything else that could shape it. For our literature review, I tracked down and assessed an academic paper on failures in the design and implementation of mental health apps, and wrote up how it applied to Nessie. To improve Nessie, we first needed to know what to avoid.</p>
+              <p>The paper recommends three things: co-design with end users from the start, measure practical outcomes like engagement, and design inclusively for underserved populations.</p>
+            </li>
+            <li>
+              <h3>Persona</h3>
+              <div class="split persona-split">
+                <div>
+                  <p>I identified user roles, workflows, and behavioral variables, then mapped patterns in our users' feelings, attitudes, goals, skills, frustrations, and environments. With those patterns in mind, we created our persona, Faye Pearl.</p>
+                  <p class="mini-head">What Faye needs from Nessie</p>
+                  <ul class="dots">
+                    <li>Simple reminders and task lists that work around a busy schedule, so an assignment doesn't slip by during a work shift</li>
+                    <li>Tasks broken into small steps, with progress feedback that doesn't add pressure</li>
+                    <li>Quick grounding exercises and short journaling prompts for overwhelming moments</li>
+                    <li>An anonymous space to vent and connect with peers, so she feels less alone</li>
+                  </ul>
+                </div>
+                <figure class="pfig"><a href="images/nessie/persona.webp" target="_blank" rel="noopener"><img src="images/nessie/persona.webp" width="855" height="1309" loading="lazy" alt="Persona sheet for Faye Pearl, a 22-year-old pre-med student who works part-time as a server, with her end goals, life goals, and a narrative of her day"></a><figcaption>Faye's persona sheet</figcaption></figure>
+              </div>
+            </li>
+            <li>
+              <h3>Vision statement</h3>
+              <p>With our research complete, I looked back at the problem statement and wrote a vision statement to guide our prototyping:</p>
+              <blockquote class="vision">"The new design of Nessie will help users improve their mental well-being by allowing them to seek support with greater emphasis on daily mental health challenges and privacy needs, and without the pressure or judgment that they currently experience. This will help close the gap in mental health support for students and lead to repeated use of Nessie."</blockquote>
+            </li>
+            <li>
+              <h3>Prototyping</h3>
+              <p>I gathered the team to start prototyping with simple doodles, mood boards, and brief notes. We discussed what supported our vision statement and what we could leave out, which set expectations for how the app could look. In Figma, we built a style sheet with color scales from 100 to 900 and font styles, and used variables to keep our designs consistent.</p>
+              <p>Our wireframes outlined the app's layout, what information each screen would show, and which parts would be interactive. Then we designed the final version, and I created the illustrations of Nessie. We tracked our progress in Google Docs and Teams the whole way, and presented the final prototype at KSU's Capstone showcase.</p>
+            </li>
+          </ol>
         </section>
 
         <section class="slide open" id="design" data-reveal>
           <h2>My designs</h2>
           <p class="lead">I wireframed and prototyped onboarding, login, the breathing exercise, streaks, and achievements.</p>
-              <div class="carousel" role="region" aria-label="Screens I designed for Nessie">
-                <div class="car-view">
-                  <ul class="car-track">
-                    <li><img src="images/nessie/landing.webp" width="402" height="874" loading="lazy" alt="Nessie landing screen with the Nessie logo, the mascot in a blue and purple circle, and Log In and Sign up buttons"><span>Landing</span></li>
-                    <li><img src="images/nessie/onb-1.webp" width="402" height="874" loading="lazy" alt="Onboarding screen reading: College is overwhelming and getting help isn't always simple, with Nessie looking stressed and dropping her papers"><span>Onboarding 1</span></li>
-                    <li><img src="images/nessie/onb-2.webp" width="402" height="874" loading="lazy" alt="Onboarding screen with Nessie peeking out of the water and the text: Meet Nessie. There are tools to manage stress, stay organized, and feel supported"><span>Onboarding 2</span></li>
-                    <li><img src="images/nessie/onb-3.webp" width="402" height="874" loading="lazy" alt="Onboarding screen reading: Journaling, mood tracking, and social groups help you de-stress after a long day of classes, with calendar, journal, and chat icons"><span>Onboarding 3</span></li>
-                    <li><img src="images/nessie/onb-4.webp" width="402" height="874" loading="lazy" alt="Onboarding screen reading: Nessie is designed to be quick, private, and easy to use, with a Get started button"><span>Onboarding 4</span></li>
-                    <li><img src="images/nessie/signup.webp" width="402" height="874" loading="lazy" alt="Sign up screen with email and password fields, a note that Nessie only uses this for account resets, a privacy policy checkbox, and an Enable Face ID button"><span>Sign up</span></li>
-                    <li><img src="images/nessie/pin.webp" width="402" height="874" loading="lazy" alt="Create a PIN screen with a number pad and a note that users can skip and make a PIN later"><span>Create a PIN</span></li>
-                    <li><img src="images/nessie/profile.webp" width="402" height="874" loading="lazy" alt="Profile screen with nine Nessie icons in different colors and a profile name field with a note that names cannot resemble a real name, for privacy"><span>Profile icon</span></li>
-                    <li><img src="images/nessie/confirm.webp" width="402" height="874" loading="lazy" alt="Confirmation screen reading: Welcome to Nessie GrapeSoda26, with the chosen purple Nessie icon"><span>Welcome</span></li>
-                    <li><img src="images/nessie/login.webp" width="402" height="874" loading="lazy" alt="Log in screen with a Face ID icon, a 4-digit PIN pad, and a Face ID button"><span>Log in</span></li>
-                    <li><img src="images/nessie/breathe.webp" width="402" height="874" loading="lazy" alt="Guided breathing screen with a glowing circle on midnight blue, the words Breathe In, a timer, and a Begin Activity button"><span>Breathing</span></li>
-                    <li><img src="images/nessie/info.webp" width="402" height="874" loading="lazy" alt="How is this helping screen explaining that controlled breathing lowers heart rate and improves focus, with Nessie smiling at the bottom"><span>Why it helps</span></li>
-                    <li><img src="images/nessie/streak.webp" width="402" height="874" loading="lazy" alt="Streak screen reading: You're on a 4 day streak, keep it up, with Nessie leaping out of the water above a weekly calendar and progress bar"><span>Streak</span></li>
-                  </ul>
-                  <ul class="car-track car-dup" aria-hidden="true">
-                    <li><img src="images/nessie/landing.webp" width="402" height="874" loading="lazy" alt=""><span>Landing</span></li>
-                    <li><img src="images/nessie/onb-1.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 1</span></li>
-                    <li><img src="images/nessie/onb-2.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 2</span></li>
-                    <li><img src="images/nessie/onb-3.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 3</span></li>
-                    <li><img src="images/nessie/onb-4.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 4</span></li>
-                    <li><img src="images/nessie/signup.webp" width="402" height="874" loading="lazy" alt=""><span>Sign up</span></li>
-                    <li><img src="images/nessie/pin.webp" width="402" height="874" loading="lazy" alt=""><span>Create a PIN</span></li>
-                    <li><img src="images/nessie/profile.webp" width="402" height="874" loading="lazy" alt=""><span>Profile icon</span></li>
-                    <li><img src="images/nessie/confirm.webp" width="402" height="874" loading="lazy" alt=""><span>Welcome</span></li>
-                    <li><img src="images/nessie/login.webp" width="402" height="874" loading="lazy" alt=""><span>Log in</span></li>
-                    <li><img src="images/nessie/breathe.webp" width="402" height="874" loading="lazy" alt=""><span>Breathing</span></li>
-                    <li><img src="images/nessie/info.webp" width="402" height="874" loading="lazy" alt=""><span>Why it helps</span></li>
-                    <li><img src="images/nessie/streak.webp" width="402" height="874" loading="lazy" alt=""><span>Streak</span></li>
-                  </ul>
-                </div>
-                <button class="btn car-toggle" type="button" aria-pressed="false">Pause</button>
-              </div>
-  
-  
+          <div class="carousel" role="region" aria-label="Screens I designed for Nessie">
+            <div class="car-view">
+              <ul class="car-track">
+                <li><img src="images/nessie/landing.webp" width="402" height="874" loading="lazy" alt="Nessie landing screen with the Nessie logo, the mascot in a blue and purple circle, and Log In and Sign up buttons"><span>Landing</span></li>
+                <li><img src="images/nessie/onb-1.webp" width="402" height="874" loading="lazy" alt="Onboarding screen reading: College is overwhelming and getting help isn't always simple, with Nessie looking stressed and dropping her papers"><span>Onboarding 1</span></li>
+                <li><img src="images/nessie/onb-2.webp" width="402" height="874" loading="lazy" alt="Onboarding screen with Nessie peeking out of the water and the text: Meet Nessie. There are tools to manage stress, stay organized, and feel supported"><span>Onboarding 2</span></li>
+                <li><img src="images/nessie/onb-3.webp" width="402" height="874" loading="lazy" alt="Onboarding screen reading: Journaling, mood tracking, and social groups help you de-stress after a long day of classes, with calendar, journal, and chat icons"><span>Onboarding 3</span></li>
+                <li><img src="images/nessie/onb-4.webp" width="402" height="874" loading="lazy" alt="Onboarding screen reading: Nessie is designed to be quick, private, and easy to use, with a Get started button"><span>Onboarding 4</span></li>
+                <li><img src="images/nessie/signup.webp" width="402" height="874" loading="lazy" alt="Sign up screen with email and password fields, a note that Nessie only uses this for account resets, a privacy policy checkbox, and an Enable Face ID button"><span>Sign up</span></li>
+                <li><img src="images/nessie/pin.webp" width="402" height="874" loading="lazy" alt="Create a PIN screen with a number pad and a note that users can skip and make a PIN later"><span>Create a PIN</span></li>
+                <li><img src="images/nessie/profile.webp" width="402" height="874" loading="lazy" alt="Profile screen with nine Nessie icons in different colors and a profile name field with a note that names cannot resemble a real name, for privacy"><span>Profile icon</span></li>
+                <li><img src="images/nessie/confirm.webp" width="402" height="874" loading="lazy" alt="Confirmation screen reading: Welcome to Nessie GrapeSoda26, with the chosen purple Nessie icon"><span>Welcome</span></li>
+                <li><img src="images/nessie/login.webp" width="402" height="874" loading="lazy" alt="Log in screen with a Face ID icon, a 4-digit PIN pad, and a Face ID button"><span>Log in</span></li>
+                <li><img src="images/nessie/breathe.webp" width="402" height="874" loading="lazy" alt="Guided breathing screen with a glowing circle on midnight blue, the words Breathe In, a timer, and a Begin Activity button"><span>Breathing</span></li>
+                <li><img src="images/nessie/info.webp" width="402" height="874" loading="lazy" alt="How is this helping screen explaining that controlled breathing lowers heart rate and improves focus, with Nessie smiling at the bottom"><span>Why it helps</span></li>
+                <li><img src="images/nessie/streak.webp" width="402" height="874" loading="lazy" alt="Streak screen reading: You're on a 4 day streak, keep it up, with Nessie leaping out of the water above a weekly calendar and progress bar"><span>Streak</span></li>
+              </ul>
+              <ul class="car-track car-dup" aria-hidden="true">
+                <li><img src="images/nessie/landing.webp" width="402" height="874" loading="lazy" alt=""><span>Landing</span></li>
+                <li><img src="images/nessie/onb-1.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 1</span></li>
+                <li><img src="images/nessie/onb-2.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 2</span></li>
+                <li><img src="images/nessie/onb-3.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 3</span></li>
+                <li><img src="images/nessie/onb-4.webp" width="402" height="874" loading="lazy" alt=""><span>Onboarding 4</span></li>
+                <li><img src="images/nessie/signup.webp" width="402" height="874" loading="lazy" alt=""><span>Sign up</span></li>
+                <li><img src="images/nessie/pin.webp" width="402" height="874" loading="lazy" alt=""><span>Create a PIN</span></li>
+                <li><img src="images/nessie/profile.webp" width="402" height="874" loading="lazy" alt=""><span>Profile icon</span></li>
+                <li><img src="images/nessie/confirm.webp" width="402" height="874" loading="lazy" alt=""><span>Welcome</span></li>
+                <li><img src="images/nessie/login.webp" width="402" height="874" loading="lazy" alt=""><span>Log in</span></li>
+                <li><img src="images/nessie/breathe.webp" width="402" height="874" loading="lazy" alt=""><span>Breathing</span></li>
+                <li><img src="images/nessie/info.webp" width="402" height="874" loading="lazy" alt=""><span>Why it helps</span></li>
+                <li><img src="images/nessie/streak.webp" width="402" height="874" loading="lazy" alt=""><span>Streak</span></li>
+              </ul>
+            </div>
+            <button class="btn car-toggle" type="button" aria-pressed="false">Pause</button>
+          </div>
+
+
           <h3 class="sub">Wireframe and final</h3>
-              <div class="bn">
-                <figure class="s3 pair">
-                  <div class="pair-imgs">
-                    <div><img src="images/nessie/wf-landing.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the landing screen"><span>Wireframe</span></div>
-                    <div><img src="images/nessie/landing.webp" width="402" height="874" loading="lazy" alt="Final design of the landing screen"><span>Final</span></div>
-                  </div>
-                  <figcaption>Landing</figcaption>
-                </figure>
-                <figure class="s3 pair">
-                  <div class="pair-imgs">
-                    <div><img src="images/nessie/wf-onb-1.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the first onboarding screen"><span>Wireframe</span></div>
-                    <div><img src="images/nessie/onb-1.webp" width="402" height="874" loading="lazy" alt="Final design of the first onboarding screen"><span>Final</span></div>
-                  </div>
-                  <figcaption>Onboarding</figcaption>
-                </figure>
-                <figure class="s3 pair">
-                  <div class="pair-imgs">
-                    <div><img src="images/nessie/wf-onb-2.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the Meet Nessie onboarding screen"><span>Wireframe</span></div>
-                    <div><img src="images/nessie/onb-2.webp" width="402" height="874" loading="lazy" alt="Final design of the Meet Nessie onboarding screen"><span>Final</span></div>
-                  </div>
-                  <figcaption>Meet Nessie</figcaption>
-                </figure>
-                <figure class="s3 pair">
-                  <div class="pair-imgs">
-                    <div><img src="images/nessie/wf-streak.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the streak screen"><span>Wireframe</span></div>
-                    <div><img src="images/nessie/streak.webp" width="402" height="874" loading="lazy" alt="Final design of the streak screen"><span>Final</span></div>
-                  </div>
-                  <figcaption>Streak</figcaption>
-                </figure>
-                <figure class="s6 pair">
-                  <div class="pair-imgs four">
-                    <div><img src="images/nessie/wf-breathe.webp" width="402" height="874" loading="lazy" alt="Wireframe of the breathing exercise screen"><span>Wireframe</span></div>
-                    <div><img src="images/nessie/breathe.webp" width="402" height="874" loading="lazy" alt="Final design of the breathing exercise screen"><span>Final</span></div>
-                    <div><img src="images/nessie/wf-info.webp" width="402" height="874" loading="lazy" alt="Wireframe of the How is this helping screen"><span>Wireframe</span></div>
-                    <div><img src="images/nessie/info.webp" width="402" height="874" loading="lazy" alt="Final design of the How is this helping screen, with Nessie smiling at the bottom"><span>Final</span></div>
-                  </div>
-                  <figcaption>Breathing exercise and why it helps</figcaption>
-                </figure>
+          <div class="bn">
+            <figure class="s3 pair">
+              <div class="pair-imgs">
+                <div><img src="images/nessie/wf-landing.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the landing screen"><span>Wireframe</span></div>
+                <div><img src="images/nessie/landing.webp" width="402" height="874" loading="lazy" alt="Final design of the landing screen"><span>Final</span></div>
               </div>
-                <p class="more-link"><a href="images/nessie/wireframes.webp" target="_blank" rel="noopener">See my full wireframe flow ↗</a></p>
-  
-  
+              <figcaption>Landing</figcaption>
+            </figure>
+            <figure class="s3 pair">
+              <div class="pair-imgs">
+                <div><img src="images/nessie/wf-onb-1.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the first onboarding screen"><span>Wireframe</span></div>
+                <div><img src="images/nessie/onb-1.webp" width="402" height="874" loading="lazy" alt="Final design of the first onboarding screen"><span>Final</span></div>
+              </div>
+              <figcaption>Onboarding</figcaption>
+            </figure>
+            <figure class="s3 pair">
+              <div class="pair-imgs">
+                <div><img src="images/nessie/wf-onb-2.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the Meet Nessie onboarding screen"><span>Wireframe</span></div>
+                <div><img src="images/nessie/onb-2.webp" width="402" height="874" loading="lazy" alt="Final design of the Meet Nessie onboarding screen"><span>Final</span></div>
+              </div>
+              <figcaption>Meet Nessie</figcaption>
+            </figure>
+            <figure class="s3 pair">
+              <div class="pair-imgs">
+                <div><img src="images/nessie/wf-streak.webp" width="402" height="874" loading="lazy" alt="Grayscale wireframe of the streak screen"><span>Wireframe</span></div>
+                <div><img src="images/nessie/streak.webp" width="402" height="874" loading="lazy" alt="Final design of the streak screen"><span>Final</span></div>
+              </div>
+              <figcaption>Streak</figcaption>
+            </figure>
+          </div>
+          <p class="more-link"><a href="images/nessie/wireframes.webp" target="_blank" rel="noopener">See my full wireframe flow ↗</a></p>
+
           <h3 class="sub" id="illustration">Illustrations</h3>
           <div class="bn">
-            <div class="s6"><h4>I drew every Nessie</h4><p>She has a different expression for each part of the app. She looks stressed in onboarding, peeks in to say hello, and jumps out of the water when you keep a streak. I also drew the nine profile icons and a sticker.</p></div>
+            <div class="s6"><h4>I drew every Nessie</h4><p>She has a different expression for each part of the app. She looks stressed in onboarding, peeks in to say hello, and jumps out of the water when you keep a streak.</p></div>
             <figure class="s2 img art"><img src="images/nessie/mascot.webp" width="900" height="741" loading="lazy" alt="Nessie, a friendly green lake creature with a purple mane and lilac belly, drawn with a thick plum outline"></figure>
             <figure class="s2 img art"><img src="images/nessie/sticker.webp" width="403" height="403" loading="lazy" alt="Round sticker of Nessie on a blue background with the words Mental Health Matters"></figure>
             <figure class="s2 img art"><img src="images/nessie/icons.webp" width="342" height="300" loading="lazy" alt="Nine Nessie profile icons in purple, yellow, blue, orange, lilac, pink, red, green, and gray"></figure>
@@ -231,17 +258,17 @@
 
         <section class="slide" id="testing" data-reveal>
           <h2>Testing</h2>
-          <p class="lead">We tested with 3 participants ages 18 to 22. Each one thought out loud through 6 tasks, then filled out a System Usability Scale survey.</p>
+          <p class="lead">We tested with 3 participants ages 18 to 22. Each one thought out loud through 6 tasks.</p>
           <div class="cs-grid">
             <div class="cs-col lav">
-              <h3>Challenges</h3>
+              <h3>What we found</h3>
               <ul class="dots">
                 <li>Every participant tried to use features we hadn't prototyped yet, like typing a journal entry.</li>
-                <li>Streaks and points got more excitement than we expected, and participants wanted more from them.</li>
+                <li>Participants loved the streaks and points and wanted even more from them.</li>
               </ul>
             </div>
             <div class="cs-col tint">
-              <h3>Solutions</h3>
+              <h3>What we changed</h3>
               <ul class="dots">
                 <li>We added working interactions to the sign in, journal, community, and profile pages.</li>
                 <li>Streaks and achievements were redesigned to feel more like a game. I prototyped those screens and animations.</li>
@@ -250,21 +277,19 @@
           </div>
         </section>
 
-        <section class="slide tint split" id="result" data-reveal>
-          <div class="result-stat">
-            <h2>Result</h2>
-            <b>6 / 6</b>
-            <p>tasks completed by participants with little to no help</p>
+        <section class="slide tint" id="result" data-reveal>
+          <h2>Result</h2>
+          <div class="split result-split">
+            <div class="prose">
+              <p>Going in, my goals were to create a private, secure space that's free and easy to use, where students can check in on their mental health, and to collaborate as a team on research and prototyping while building a strong portfolio piece and growing as a leader. I believe I checked those boxes.</p>
+              <p>The hard work paid off. Not only did my design skills improve, but so did my leadership and collaboration. I learned a lot about my communication style, and how staying organized and communicating well makes the design process run smoother. Working through challenges and conflicts is part of the journey, and it helps designs become even more successful.</p>
+              <p>If I went back now with everything I've learned, it would be even better! I'm so grateful I got to lead this design journey with my teammates and see my idea come to life. Nessie turned out even better than I imagined.</p>
+            </div>
+            <figure class="cs-fig" style="margin:0">
+              <div class="frame"><img src="images/nessie-showcase.jpg" width="1600" height="1200" loading="lazy" alt="Avery and members of Team Nessie standing behind a table with the Nessie app on two monitors and a laptop showing the usability testing process page"></div>
+              <figcaption>Team Nessie presenting the final app at the Capstone showcase</figcaption>
+            </figure>
           </div>
-          <figure class="cs-fig" style="margin:0">
-            <div class="frame"><img src="images/nessie-showcase.jpg" width="1600" height="1200" loading="lazy" alt="Avery and members of Team Nessie standing behind a table with the Nessie app on two monitors and a laptop showing the usability testing process page"></div>
-            <figcaption>Team Nessie presenting the final app</figcaption>
-          </figure>
-        </section>
-
-        <section class="slide open" id="final" data-reveal>
-          <h2>Final thought</h2>
-          <p class="lead">Going in, my goal was to build a functional application and better understand the Goal-Directed Design process.</p>
         </section>
 
         <a class="next-proj" href="blueprint.html" data-reveal>
@@ -293,6 +318,6 @@
     </div>
   </footer>
 
-  <script src="main.js?v=1020c"></script>
+  <script src="main.js?v=1021a"></script>
 </body>
 </html>
