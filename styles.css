@@ -700,7 +700,7 @@ a.tile-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3p
 @media (max-width: 560px) { .pstep > li { padding: 56px 18px 18px; } .pstep > li::before { left: 18px; top: 18px; } }
 
 /* ---------- Image viewer ---------- */
-.lightbox { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(16, 20, 36, .9); color: #fff; overflow: auto; cursor: zoom-out; }
+.lightbox { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(16, 20, 36, .96); color: #fff; overflow: auto; cursor: zoom-out; }
 .lightbox::backdrop { background: transparent; }
 .lb-stage { min-height: calc(100dvh - 40px); display: grid; place-items: center; padding: 56px 16px 8px; }
 .lb-stage img { display: block; max-width: 100%; max-height: calc(100dvh - 110px); width: auto; height: auto; border-radius: 10px; background: #fff; cursor: zoom-in; }
