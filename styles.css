@@ -698,3 +698,15 @@ a.tile-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3p
 .vision { margin-top: 12px; padding: 16px 20px; border-left: 4px solid var(--orb); background: var(--bg); border-radius: 0 var(--r-md) var(--r-md) 0; font-style: italic; color: var(--text); }
 .result-split { grid-template-columns: 1.2fr 1fr; }
 @media (max-width: 560px) { .pstep > li { padding: 56px 18px 18px; } .pstep > li::before { left: 18px; top: 18px; } }
+
+/* ---------- Image viewer ---------- */
+.lightbox { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(16, 20, 36, .9); color: #fff; overflow: auto; cursor: zoom-out; }
+.lightbox::backdrop { background: transparent; }
+.lb-stage { min-height: calc(100dvh - 40px); display: grid; place-items: center; padding: 56px 16px 8px; }
+.lb-stage img { display: block; max-width: 100%; max-height: calc(100dvh - 110px); width: auto; height: auto; border-radius: 10px; background: #fff; cursor: zoom-in; }
+.lightbox.zoomed .lb-stage { place-items: start; }
+.lightbox.zoomed .lb-stage img { max-width: none; max-height: none; width: 200%; min-width: 1400px; cursor: zoom-out; }
+.lb-close { position: fixed; top: 12px; right: 14px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: #1F2A4D; font-size: 1.7rem; line-height: 1; cursor: pointer; z-index: 2; }
+.lb-close:focus-visible { outline: 3px solid var(--orb); outline-offset: 3px; }
+.lb-hint { text-align: center; font-size: .9rem; opacity: .85; padding: 0 16px 14px; }
+html.lb-open { overflow: hidden; }

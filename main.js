@@ -214,3 +214,37 @@ document.addEventListener("click", (e) => {
   btn.setAttribute("aria-pressed", String(paused));
   btn.textContent = paused ? "Play" : "Pause";
 });
+
+// image viewer: opens over the page, closes back to the same spot
+(function () {
+  let dlg;
+  function build() {
+    dlg = document.createElement("dialog");
+    dlg.className = "lightbox";
+    dlg.innerHTML = '<button class="lb-close" type="button" aria-label="Close image">×</button><div class="lb-stage"><img alt=""></div><p class="lb-hint">Tap the image to zoom. Tap outside it to close.</p>';
+    document.body.appendChild(dlg);
+    const img = dlg.querySelector("img");
+    dlg.addEventListener("click", (e) => {
+      if (e.target === img) { dlg.classList.toggle("zoomed"); return; }
+      dlg.close();
+    });
+    dlg.addEventListener("close", () => {
+      dlg.classList.remove("zoomed");
+      document.documentElement.classList.remove("lb-open");
+      if (dlg._from) dlg._from.focus({ preventScroll: true });
+    });
+  }
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[data-lightbox]");
+    if (!a || e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    if (!dlg || !document.body.contains(dlg)) build();
+    const src = a.querySelector("img");
+    const img = dlg.querySelector("img");
+    img.src = a.getAttribute("href");
+    img.alt = src ? src.alt : "";
+    dlg._from = a;
+    document.documentElement.classList.add("lb-open");
+    dlg.showModal();
+  });
+})();
